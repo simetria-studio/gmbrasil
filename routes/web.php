@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CepController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +20,6 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('buscacep', [CepController::class, 'buscaCep'])->name('address.cep');
+Route::post('register-user', [UserController::class, 'store'])->name('register.user');
+Route::post('login-user', [UserController::class, 'login'])->name('login.user');
