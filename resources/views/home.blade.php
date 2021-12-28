@@ -15,7 +15,7 @@
                     @endif
 
                     Olá, {{ auth()->user()->name }} <br>
-                    Seu código é: {{ auth()->user()->uniqid }} <br>
+                    Seu código é: <span class="text-success">{{ auth()->user()->uniqid }}</span> <br>
                     <br>
                     Estamos trabalhando para você, tudo vai ficar certinho tenha paciência. <br>
                     <br>
