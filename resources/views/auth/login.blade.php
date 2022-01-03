@@ -9,7 +9,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-12 ">
-                <h3 class="text-center">Entrar na GM Brasil</h3>
+                <h3 class="text-center">Escritório virtual GM BRASIL</h3>
             </div>
             <div class="col-md-12">
                 <form action="{{ url('login-user') }}" id="form-login" method="post">
