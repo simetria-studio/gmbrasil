@@ -1,19 +1,16 @@
     <!DOCTYPE html>
     <html lang="pt-br">
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         {{-- <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}"> --}}
-        <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
-            rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-            integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ url('assets/css/painel.min.css') }}">
+        <script src="https://kit.fontawesome.com/e67788a73f.js" crossorigin="anonymous"></script>
         <title>GM Brasil</title>
     </head>
-
     <body>
         <div class="video-bg">
             <video width="320" height="240" autoplay loop muted>
@@ -58,71 +55,25 @@
                     </div>
                 </div>
             </header>
-
             <div class="wrapper">
                 <aside>
                     <div class="left-side">
                         <div class="side-wrapper">
                             <div class="side-title">Principal</div>
                             <div class="side-menu">
-                                <a href="#">
-                                    {{-- <svg viewBox="0 0 512 512">
-                                        <g xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                                            <path
-                                                d="M0 0h128v128H0zm0 0M192 0h128v128H192zm0 0M384 0h128v128H384zm0 0M0 192h128v128H0zm0 0"
-                                                data-original="#bfc9d1" />
-                                        </g>
-                                        <path xmlns="http://www.w3.org/2000/svg" d="M192 192h128v128H192zm0 0"
-                                            fill="currentColor" data-original="#82b1ff" />
-                                        <path xmlns="http://www.w3.org/2000/svg"
-                                            d="M384 192h128v128H384zm0 0M0 384h128v128H0zm0 0M192 384h128v128H192zm0 0M384 384h128v128H384zm0 0"
-                                            fill="currentColor" data-original="#bfc9d1" />
-                                    </svg> --}}
-                                    Home
-                                </a>
+                                <a href="{{ route('home') }}"><i class="fas fa-home"></i> Home</a>
                             </div>
                         </div>
                         <div class="side-wrapper">
                             <div class="side-title">Categorias</div>
                             <div class="side-menu">
-                                <a href="#">
-                                    {{-- <svg viewBox="0 0 488.455 488.455" fill="currentColor">
-                                        <path
-                                            d="M287.396 216.317c23.845 23.845 23.845 62.505 0 86.35s-62.505 23.845-86.35 0-23.845-62.505 0-86.35 62.505-23.845 86.35 0" />
-                                        <path
-                                            d="M427.397 91.581H385.21l-30.544-61.059H133.76l-30.515 61.089-42.127.075C27.533 91.746.193 119.115.164 152.715L0 396.86c0 33.675 27.384 61.074 61.059 61.074h366.338c33.675 0 61.059-27.384 61.059-61.059V152.639c-.001-33.674-27.385-61.058-61.059-61.058zM244.22 381.61c-67.335 0-122.118-54.783-122.118-122.118s54.783-122.118 122.118-122.118 122.118 54.783 122.118 122.118S311.555 381.61 244.22 381.61z" />
-                                    </svg> --}}
-                                    Pedidos
-                                </a>
-                                <a href="#">
-                                    {{-- <svg viewBox="0 0 512 512" fill="currentColor">
-                                        <circle cx="295.099" cy="327.254" r="110.96"
-                                            transform="rotate(-45 295.062 327.332)" />
-                                        <path
-                                            d="M471.854 338.281V163.146H296.72v41.169a123.1 123.1 0 01121.339 122.939c0 3.717-.176 7.393-.5 11.027zM172.14 327.254a123.16 123.16 0 01100.59-120.915L195.082 73.786 40.146 338.281H172.64c-.325-3.634-.5-7.31-.5-11.027z" />
-                                    </svg> --}}
-                                    Seus produtos
-                                </a>
-                                <a href="#">
-                                    {{-- <svg viewBox="0 0 512 512" fill="currentColor">
-                                        <circle cx="295.099" cy="327.254" r="110.96"
-                                            transform="rotate(-45 295.062 327.332)" />
-                                        <path
-                                            d="M471.854 338.281V163.146H296.72v41.169a123.1 123.1 0 01121.339 122.939c0 3.717-.176 7.393-.5 11.027zM172.14 327.254a123.16 123.16 0 01100.59-120.915L195.082 73.786 40.146 338.281H172.64c-.325-3.634-.5-7.31-.5-11.027z" />
-                                    </svg> --}}
-                                    Indicados
-                                </a>
-                                <a href="#">
-                                    {{-- <svg viewBox="0 0 58 58" fill="currentColor">
-                                        <path
-                                            d="M57 6H1a1 1 0 00-1 1v44a1 1 0 001 1h56a1 1 0 001-1V7a1 1 0 00-1-1zM10 50H2v-9h8v9zm0-11H2v-9h8v9zm0-11H2v-9h8v9zm0-11H2V8h8v9zm26.537 12.844l-11 7a1.007 1.007 0 01-1.018.033A1.001 1.001 0 0124 36V22a1.001 1.001 0 011.538-.844l11 7a1.003 1.003 0 01-.001 1.688zM56 50h-8v-9h8v9zm0-11h-8v-9h8v9zm0-11h-8v-9h8v9zm0-11h-8V8h8v9z" />
-                                    </svg> --}}
-                                    Seus lucros
-                                </a>
+                                <a href="{{ route('pedidos') }}"><i class="fas fa-clipboard-list"></i></i> Pedidos</a>
+                                <a href="{{ route('estoque') }}"><i class="fas fa-boxes"></i> Seus produtos</a>
+                                <a href="{{ route('afiliados') }}"><i class="fas fa-users"></i> Afiliados</a>
+                                <a href="{{ route('lucros') }}"><i class="fas fa-hand-holding-usd"></i> Seus lucros</a>
                             </div>
                         </div>
                 </aside>
-
                 <div class="main-container">
                     @yield('content')
                 </div>
@@ -131,12 +82,8 @@
         </div>
 
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-                integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
-                integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous">
-        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
@@ -163,5 +110,4 @@
         </script>
         @yield('script')
     </body>
-
     </html>
