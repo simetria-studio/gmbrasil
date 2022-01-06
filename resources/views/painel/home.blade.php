@@ -68,7 +68,7 @@
                 <div class="modal-body">
                    <div class="d-flex justify-content-center icons">
                     <div class="whatsapp">
-                        <a href="whatsapp://send?text=Olá esse é meu código {{ auth()->user()->uniqid }}"><i class="fab fa-whatsapp"></i></a>
+                        <a href="whatsapp://send?text=Olá esse é meu código {{ auth()->user()->uniqid }} http://gmbrasilvd.com.br/register"><i class="fab fa-whatsapp"></i></a>
                     </div>
                     <div class="mensenger">
                         <a href="fb-messenger://share/?link=http://url-you-want-to-share.com&app_id=your-app-id-here"><i class="fab fa-facebook-messenger"></i></a>
