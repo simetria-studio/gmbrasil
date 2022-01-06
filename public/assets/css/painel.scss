@@ -122,6 +122,22 @@ body.light-mode .video-bg:before {
     );
     backdrop-filter: saturate(3);
 }
+.modal-backdrop.show {
+    opacity: .5;
+    display: none !important;
+}
+
+.icons{
+    a{
+        font-size: 3em;
+        margin: 0 8px;
+    }
+    .whatsapp{
+        a{
+            color: #34af23;
+        }
+    }
+}
 .app {
     background-color: var(--theme-bg-color);
     max-width: 1250px;

@@ -7,7 +7,7 @@
                 <div class="content-text">
                     Esse é seu código: {{ Auth::user()->uniqid }}
                 </div>
-                <button class="content-button">Compartilhar</button>
+                <button class="content-button" data-toggle="modal" data-target="#exampleModal">Compartilhar</button>
             </div>
         </div>
         <div class="content-section">
@@ -57,6 +57,25 @@
                         <div class="menu"></div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                   <div class="d-flex justify-content-center icons">
+                    <div class="whatsapp">
+                        <a href="whatsapp://send?text=http://www.example.com"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <div class="mensenger">
+                        <a href="fb-messenger://share/?link=http://url-you-want-to-share.com&app_id=your-app-id-here"><i class="fab fa-facebook-messenger"></i></a>
+                    </div>
+                   </div>
+                </div>
+
             </div>
         </div>
     </div>

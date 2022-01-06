@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ url('assets/css/painel.min.css') }}">
         <script src="https://kit.fontawesome.com/e67788a73f.js" crossorigin="anonymous"></script>
-        <title>GM Brasil</title>
+        <title>GM Brasil VD</title>
     </head>
     <body>
         <div class="video-bg">
