@@ -40,7 +40,7 @@
                         <div class="iq-navbar-custom-menu d-flex align-items-center justify-content-between">
                            <div class="iq-sidebar-logo">
                               <div class="top-logo">
-                                 <a href="index.html" class="logo">
+                                 <a href="{{ route('admin.index') }}" class="logo">
                                  <img src="{{ url('assets/img/logo.png') }}" class="img-fluid" alt="">
                                  <span>GM BRASIL VD</span>
                                  </a>
