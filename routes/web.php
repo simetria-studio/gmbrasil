@@ -1,14 +1,17 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CepController;
+use App\Http\Controllers\UserController;
+use Illuminate\Routing\Route as RoutingRoute;
+use App\Http\Controllers\Auth\AdminController;
+use App\Http\Controllers\Admin\PainelController;
 use App\Http\Controllers\Alunos\AlunosController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\CepController;
-use App\Http\Controllers\painel\AfiliadosController;
-use App\Http\Controllers\painel\EstoqueController;
 use App\Http\Controllers\painel\LucrosController;
+use App\Http\Controllers\painel\EstoqueController;
 use App\Http\Controllers\painel\PedidosController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\painel\AfiliadosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +42,19 @@ Route::get('/lucros', [LucrosController::class, 'index'])->name('lucros');
 Route::get('alunos/cadastro', [AlunosController::class, 'index'])->name('alunos.index');
 Route::get('alunos/thanks', [AlunosController::class, 'thanks'])->name('alunos.thanks');
 Route::post('alunos/cadastro/store', [AlunosController::class, 'store'])->name('alunos.store');
+
+Route::get('admin', function () {
+
+    return view('layouts.painel');
+});
+
+Route::get('admin/login', [AdminController::class, 'index'])->name('admin.login');
+Route::post('admin/login/login', [AdminController::class, 'login'])->name('admin.login.entrar');
+Route::get('admin/register', [AdminController::class, 'register'])->name('admin.login.register');
+Route::post('admin/login/store', [AdminController::class, 'store'])->name('admin.login.store');
+
+Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
+
+    Route::get('home', [PainelController::class, 'index'])->name('admin.index');
+    Route::get('usuarios', [PainelController::class, 'users'])->name('admin.users');
+});
