@@ -16,6 +16,8 @@
             </div>
 
             <div>
+                  <h3>Regional: {{ $regional }}</h3>
+                  <h3>Diretor da Regional: {{ $diretor }}</h3>
                   <h3>Nome: {{ $name }}</h3>
                   <h3>Plano: {{ $plano }}</h3>
                   <h3>Curso: {{ $curso }}</h3>

@@ -19,6 +19,19 @@
         <form id="regForm" action="{{ route('alunos.store') }}" method="POST">
             @csrf
             <div class="tab">
+                <h2 class="mt-2 mb-5 text-white"><b>COMEÇAR O CADASTRO</b></h2>
+                <div class="text-label">REGIONAL</div>
+                <div class="form-group mt-3 mb-5 input-material">
+                    <input type="text" class="{{ $errors->has('name') ? 'is-invalid' : '' }}"
+                        placeholder="Regional" name="regional" oninput="this.className = ''">
+                </div>
+                <div class="text-label">DIRETOR</div>
+                <div class="form-group mt-3 mb-5 input-material">
+                    <input type="text" class="{{ $errors->has('name') ? 'is-invalid' : '' }}"
+                        placeholder="Diretor da regional" name="diretor" oninput="this.className = ''">
+                </div>
+            </div>
+            <div class="tab">
                 <h2 class="mt-2 mb-5 text-white"><b>ESCOLHA A OPÇÃO</b></h2>
                 <div class="row justify-content-center">
                     <div class="form-group col-8 input-material">
@@ -227,6 +240,7 @@
 
             <!-- Circles which indicates the steps of the form: -->
             <div class="d-none" style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
                 <span class="step"></span>
                 <span class="step"></span>
                 <span class="step"></span>

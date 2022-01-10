@@ -19,6 +19,8 @@ class AlunosController extends Controller
     public function store(Request $request)
     {
         $mails = new Mails();
+        $mails['regional'] = $request->regional;
+        $mails['diretor'] = $request->diretor;
         $mails['plano'] = $request->plano;
         $mails['curso'] = $request->curso;
         $mails['name'] = $request->name;

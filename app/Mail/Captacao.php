@@ -33,6 +33,8 @@ class Captacao extends Mailable
     {
         return $this->markdown('mail.contact')->subject('Inscrição do formulario EAD')->with(
             [
+                'regional' => $this->mail->regional,
+                'diretor' => $this->mail->diretor,
                 'name' => $this->mail->name,
                 'plano' => $this->mail->plano,
                 'curso' => $this->mail->curso,
