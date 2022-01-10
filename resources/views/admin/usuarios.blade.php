@@ -23,6 +23,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Código</th>
+                                    <th>Código do filiado</th>
                                     <th>Filiado</th>
                                     <th>Ação</th>
                                 </tr>
@@ -33,6 +34,7 @@
                                         <td contenteditable="true">{{ $user->name }}</td>
                                         <td contenteditable="true">{{ $user->email }}</td>
                                         <td contenteditable="true">{{ $user->uniqid }}</td>
+                                        <td contenteditable="true">{{ $user->codigo }}</td>
                                         <td contenteditable="true">{{ $user->filiados->name ?? 'Código errado ou matriz' }}</td>
                                         <td>
                                             <span class=""><button type="button"
