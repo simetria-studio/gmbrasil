@@ -16,7 +16,7 @@ class PainelController extends Controller
 
     public function users()
     {
-        $users = User::paginate();
+        $users = User::paginate(15);
         return view('admin.usuarios', get_defined_vars());
     }
 }

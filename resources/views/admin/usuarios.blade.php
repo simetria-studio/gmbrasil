@@ -37,6 +37,8 @@
                                         <td>
                                             <span class=""><button type="button"
                                                     class="btn iq-bg-danger btn-rounded btn-sm my-0">Remover</button></span>
+                                            <span class=""><button type="button"
+                                                    class="btn iq-bg-info btn-rounded btn-sm my-0">Editar</button></span>
                                         </td>
                                     </tr>
                                 @endforeach
