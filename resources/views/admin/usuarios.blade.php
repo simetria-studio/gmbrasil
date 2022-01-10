@@ -13,9 +13,9 @@
                 <div class="iq-card-body">
                     <div id="table" class="table-editable">
                         <span class="float-right mb-3 mr-2">
-                            <button class="btn btn-sm iq-bg-success"><i class="ri-add-fill"><span
+                            {{-- <button class="btn btn-sm iq-bg-success"><i class="ri-add-fill"><span
                                         class="pl-1">Adicionar Novo</span></i>
-                            </button>
+                            </button> --}}
                         </span>
                         <table class="table table-bordered table-responsive-md table-striped text-center">
                             <thead>
