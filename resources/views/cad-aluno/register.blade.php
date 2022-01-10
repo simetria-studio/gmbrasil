@@ -243,9 +243,6 @@
 
             </div>
 
-            <div class="text-register text-center my-3">
-                <a href="{{ route('login') }}" class="text-white"><strong>Já tenho cadatro!</strong></a>
-            </div>
         </form>
     </div>
     </div>
