@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Alunos\AlunosController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CepController;
 use App\Http\Controllers\painel\AfiliadosController;
@@ -34,3 +35,7 @@ Route::get('/pedidos', [PedidosController::class, 'index'])->name('pedidos');
 Route::get('/estoque', [EstoqueController::class, 'index'])->name('estoque');
 Route::get('/afiliados', [AfiliadosController::class, 'index'])->name('afiliados');
 Route::get('/lucros', [LucrosController::class, 'index'])->name('lucros');
+
+Route::get('alunos/cadastro', [AlunosController::class, 'index'])->name('alunos.index');
+Route::get('alunos/thanks', [AlunosController::class, 'thanks'])->name('alunos.thanks');
+Route::post('alunos/cadastro/store', [AlunosController::class, 'store'])->name('alunos.store');

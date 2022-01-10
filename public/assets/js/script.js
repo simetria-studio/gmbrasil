@@ -25,6 +25,9 @@ $.fn.materializeInputs = function(selectors) {
 $('body').materializeInputs();
 
 $('[name="cpf"]').mask('000.000.000-00');
+$('[name="telefone"]').mask('(99) 9999-9999');
+$('[name="whatsapp"]').mask('(99) 99999-9999');
+$('[name="cpf_responsavel"]').mask('000.000.000-00');
 $('[name="rg"]').mask('99.999.999-9');
 $(document).ready(function(){
     $('#form-login').find('input').on('keyup', function(e){
