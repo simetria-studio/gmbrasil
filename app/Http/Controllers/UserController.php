@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Adress;
+use App\Models\Codigo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -69,6 +70,7 @@ class UserController extends Controller
             'birth_date' => $request->birth_date,
             'password' => Hash::make($request->password),
         ]);
+
 
         $adress = Adress::create([
             'user_id' => $users->id,

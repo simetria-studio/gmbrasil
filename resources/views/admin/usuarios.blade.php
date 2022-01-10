@@ -33,7 +33,7 @@
                                         <td contenteditable="true">{{ $user->name }}</td>
                                         <td contenteditable="true">{{ $user->email }}</td>
                                         <td contenteditable="true">{{ $user->uniqid }}</td>
-                                        <td contenteditable="true">{{ $user->codigo ?? 'Matriz' }}</td>
+                                        <td contenteditable="true">{{ $user->filiados->name ?? 'Código errado ou matriz' }}</td>
                                         <td>
                                             <span class=""><button type="button"
                                                     class="btn iq-bg-danger btn-rounded btn-sm my-0">Remover</button></span>

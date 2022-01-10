@@ -43,10 +43,7 @@ Route::get('alunos/cadastro', [AlunosController::class, 'index'])->name('alunos.
 Route::get('alunos/thanks', [AlunosController::class, 'thanks'])->name('alunos.thanks');
 Route::post('alunos/cadastro/store', [AlunosController::class, 'store'])->name('alunos.store');
 
-Route::get('admin', function () {
 
-    return view('layouts.painel');
-});
 
 Route::get('admin/login', [AdminController::class, 'index'])->name('admin.login');
 Route::post('admin/login/login', [AdminController::class, 'login'])->name('admin.login.entrar');
