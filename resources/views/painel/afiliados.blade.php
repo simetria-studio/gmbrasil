@@ -28,7 +28,7 @@
                     </span>
                     <div class="app-card__subtext">Ver todos</div>
                     <div class="app-card-buttons">
-                        <button class="content-button status-button">Ver</button>
+                      <a href="{{ route('afiliados.todos') }}"> <button class="content-button status-button">Ver</button>
                         <div class="menu"></div>
                     </div>
                 </div>

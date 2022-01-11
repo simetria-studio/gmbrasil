@@ -41,10 +41,11 @@ Route::get('alunos/thanks', [AlunosController::class, 'thanks'])->name('alunos.t
 Route::post('alunos/cadastro/store', [AlunosController::class, 'store'])->name('alunos.store');
 
 Route::middleware(['auth:web'])->group(function () {
-    
+
     Route::get('/pedidos', [PedidosController::class, 'index'])->name('pedidos');
     Route::get('/estoque', [EstoqueController::class, 'index'])->name('estoque');
     Route::get('/afiliados', [AfiliadosController::class, 'index'])->name('afiliados');
+    Route::get('/afiliados/todos', [AfiliadosController::class, 'create'])->name('afiliados.todos');
     Route::get('/lucros', [LucrosController::class, 'index'])->name('lucros');
 
 });

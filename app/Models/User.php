@@ -51,4 +51,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(User::class,'codigo', 'uniqid');
     }
+    public function afiliados()
+    {
+        return $this->belongsTo(User::class,'uniqid', 'codigo');
+    }
 }

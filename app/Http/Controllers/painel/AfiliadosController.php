@@ -27,7 +27,9 @@ class AfiliadosController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::with('afiliados')->where('id', auth()->user()->id)->get();
+        // dd($users);
+        return view('painel.afiliados-all', get_defined_vars());
     }
 
     /**
