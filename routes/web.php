@@ -34,16 +34,20 @@ Route::post('login-user', [UserController::class, 'login'])->name('login.user');
 
 
 
-Route::get('/pedidos', [PedidosController::class, 'index'])->name('pedidos');
-Route::get('/estoque', [EstoqueController::class, 'index'])->name('estoque');
-Route::get('/afiliados', [AfiliadosController::class, 'index'])->name('afiliados');
-Route::get('/lucros', [LucrosController::class, 'index'])->name('lucros');
+
 
 Route::get('alunos/cadastro', [AlunosController::class, 'index'])->name('alunos.index');
 Route::get('alunos/thanks', [AlunosController::class, 'thanks'])->name('alunos.thanks');
 Route::post('alunos/cadastro/store', [AlunosController::class, 'store'])->name('alunos.store');
 
+Route::middleware(['auth:web'])->group(function () {
+    
+    Route::get('/pedidos', [PedidosController::class, 'index'])->name('pedidos');
+    Route::get('/estoque', [EstoqueController::class, 'index'])->name('estoque');
+    Route::get('/afiliados', [AfiliadosController::class, 'index'])->name('afiliados');
+    Route::get('/lucros', [LucrosController::class, 'index'])->name('lucros');
 
+});
 
 Route::get('admin/login', [AdminController::class, 'index'])->name('admin.login');
 Route::post('admin/login/login', [AdminController::class, 'login'])->name('admin.login.entrar');

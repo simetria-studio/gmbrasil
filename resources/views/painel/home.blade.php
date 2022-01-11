@@ -37,12 +37,12 @@
                 </div>
                 <div class="app-card">
                     <span>
-                        Indicações
+                        Afiliados
                     </span>
-                    <div class="app-card__subtext">Seus indicados
+                    <div class="app-card__subtext">Seus Afiliados
                     </div>
                     <div class="app-card-buttons">
-                        <button class="content-button status-button">Ver</button>
+                       <a href="{{ route('afiliados') }}"> <button class="content-button status-button">Ver</button></a>
                         <div class="menu"></div>
                     </div>
                 </div>

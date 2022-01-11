@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\painel;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AfiliadosController extends Controller
 {
@@ -14,7 +15,9 @@ class AfiliadosController extends Controller
      */
     public function index()
     {
-        return view('painel.afiliados');
+        $user = User::with('filiados')->where('id', auth()->user()->id)->first();
+        // dd($user);
+        return view('painel.afiliados', get_defined_vars());
     }
 
     /**
