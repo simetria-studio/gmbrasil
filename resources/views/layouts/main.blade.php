@@ -1,17 +1,21 @@
     <!DOCTYPE html>
     <html lang="pt-br">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         {{-- <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}"> --}}
-        <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"rel="stylesheet">
+        <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+            rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ url('assets/css/painel.min.css') }}">
         <script src="https://kit.fontawesome.com/e67788a73f.js" crossorigin="anonymous"></script>
         <title>GM Brasil VD</title>
     </head>
+
     <body>
+
         <div class="video-bg">
             <video width="320" height="240" autoplay loop muted>
                 <source src="https://assets.codepen.io/3364143/7btrrd.mp4" type="video/mp4">
@@ -25,6 +29,7 @@
             </svg>
         </div>
         <div class="app">
+
             <header>
                 <div class="header">
                     <div class="menu-circle"></div>
@@ -49,11 +54,18 @@
                             <path
                                 d="M448.773 235.551A135.893 135.893 0 00451 211c0-74.443-60.557-135-135-135-47.52 0-91.567 25.313-115.766 65.537-32.666-10.59-66.182-6.049-93.794 12.979-27.612 19.013-44.092 49.116-45.425 82.031C24.716 253.788 0 290.497 0 331c0 7.031 1.703 13.887 3.006 20.537l.015.015C12.719 400.492 56.034 436 106 436h300c57.891 0 106-47.109 106-105 0-40.942-25.053-77.798-63.227-95.449z" />
                         </svg>
-                        <img class="profile-img"
+                        <img id="img-hover" class="profile-img"
                             src="https://ui-avatars.com/api/?size=512&amp;background=5B4699&amp;color=fff&amp;name={{ auth()->user()->name }}"
                             alt="">
+                        <div class="drop-menu d-none" id="drop-menu">
+                            <nav class="nav flex-column">
+                                <a class="nav-link active" href="#">Perfil</a>
+                                <a class="nav-link" href="{{ route('painel.logout') }}">Sair</a>
+                            </nav>
+                        </div>
                     </div>
                 </div>
+
             </header>
             <div class="wrapper">
                 <aside>
@@ -70,7 +82,8 @@
                                 <a href="{{ route('pedidos') }}"><i class="fas fa-clipboard-list"></i></i> Pedidos</a>
                                 <a href="{{ route('estoque') }}"><i class="fas fa-boxes"></i> Seus produtos</a>
                                 <a href="{{ route('afiliados') }}"><i class="fas fa-users"></i> Afiliados</a>
-                                <a href="{{ route('lucros') }}"><i class="fas fa-hand-holding-usd"></i> Seus lucros</a>
+                                <a href="{{ route('lucros') }}"><i class="fas fa-hand-holding-usd"></i> Seus
+                                    lucros</a>
                             </div>
                         </div>
                 </aside>
@@ -110,4 +123,5 @@
         </script>
         @yield('script')
     </body>
+
     </html>

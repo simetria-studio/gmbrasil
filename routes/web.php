@@ -47,6 +47,7 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/afiliados', [AfiliadosController::class, 'index'])->name('afiliados');
     Route::get('/afiliados/todos', [AfiliadosController::class, 'create'])->name('afiliados.todos');
     Route::get('/lucros', [LucrosController::class, 'index'])->name('lucros');
+    Route::any('/logout/painel', [UserController::class, 'logout'])->name('painel.logout');
 
 });
 

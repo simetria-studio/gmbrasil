@@ -1,7 +1,7 @@
-$.fn.materializeInputs = function(selectors) {
+$.fn.materializeInputs = function (selectors) {
 
     // default param with backwards compatibility
-    if (typeof(selectors)==='undefined') selectors = "input, textarea, select";
+    if (typeof (selectors) === 'undefined') selectors = "input, textarea, select";
 
     // attribute function
     function setInputValueAttr(element) {
@@ -14,7 +14,7 @@ $.fn.materializeInputs = function(selectors) {
     });
 
     // on keyup and change
-    this.on("keyup change", selectors, function() {
+    this.on("keyup change", selectors, function () {
         setInputValueAttr(this);
     });
 };
@@ -29,14 +29,14 @@ $('[name="telefone"]').mask('(99) 9999-9999');
 $('[name="whatsapp"]').mask('(99) 99999-9999');
 $('[name="cpf_responsavel"]').mask('000.000.000-00');
 $('[name="rg"]').mask('99.999.999-9');
-$(document).ready(function(){
-    $('#form-login').find('input').on('keyup', function(e){
-        if(e.keyCode == 13){
+$(document).ready(function () {
+    $('#form-login').find('input').on('keyup', function (e) {
+        if (e.keyCode == 13) {
             $('#btn-login').trigger('click');
         }
     });
 
-    $(document).on('click', '#btn-login', function(){
+    $(document).on('click', '#btn-login', function () {
         var btn = $(this);
         var form = $('#form-login').serialize();
         var url = $('#form-login').attr('action');
@@ -66,4 +66,8 @@ $(document).ready(function(){
             }
         });
     });
+});
+
+$(document).on('click', '#img-hover', function () {
+    $('#drop-menu').toggleClass('d-none');
 });

@@ -851,3 +851,17 @@ body.light-mode .video-bg:before {
     background: var(--scrollbar-bg);
     border-radius: 10px;
 }
+
+
+
+
+.drop-menu{
+    width: 250px;
+    background: #f7f7f7;
+    z-index: 1200;
+    position: absolute;
+    top: 59px;
+    right: 0;
+    text-align: center;
+
+}
