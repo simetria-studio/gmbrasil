@@ -42,7 +42,7 @@ html {
 }
 body {
     font-family: var(--body-font);
-    background-image: url(https://wallpapershome.com/images/wallpapers/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg);
+    background-image: url(https://wallpapershome.com/images/pages/pic_h/23870.jpg);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -175,7 +175,7 @@ body.light-mode .video-bg:before {
 .header-menu a {
     padding: 20px 30px;
     text-decoration: none;
-    color: var(--inactive-color);
+    color: #fff;
     border-bottom: 2px solid transparent;
     transition: 0.3s;
 }
