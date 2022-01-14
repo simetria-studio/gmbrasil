@@ -104,6 +104,14 @@
 
                                  </ul>
                               </li>
+                              <li class="active">
+                                 <a href="#menu-design" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="true"><i class="ri-menu-3-line"></i><span>Gerenciamento de Produtos</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                                 <ul id="menu-design" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                    <li><a href=""><i class="ri-git-commit-line"></i>Categorias</a></li>
+                                    <li><a href=""><i class="ri-git-commit-line"></i>Produtos</a></li>
+                                 </ul>
+
+                              </li>
                            </ul>
                         </nav>
                      </div>
