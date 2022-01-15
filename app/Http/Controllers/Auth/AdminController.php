@@ -27,7 +27,7 @@ class AdminController extends Controller
         if($authValid){
             if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
 
-                return response()->json('home', 200);
+                return response()->json('dashboard', 200);
             }
         }else{
             return response()->json(['invalid' => 'Email ou senha invalidos'], 422);
