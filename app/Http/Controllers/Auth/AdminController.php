@@ -42,7 +42,7 @@ class AdminController extends Controller
             'password' => Hash::make($request['password']),
         ]);
         if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect('/home');
+            return redirect('/dashboard');
         }
     }
 }
