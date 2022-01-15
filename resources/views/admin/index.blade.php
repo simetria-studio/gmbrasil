@@ -37,7 +37,7 @@
                 <div class="iq-card-body">
                     <div class="d-flex align-items-center justify-content-between">
                         <h5>Lucros</h5>
-                        <h3>R$5,00</h3>
+                        <h3>R$0,00</h3>
                     </div>
                 </div>
             </div>

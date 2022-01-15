@@ -12,6 +12,8 @@
       <!-- Typography CSS -->
       <link rel="stylesheet" href="{{ url('painel/css/typography.css')}} ">
       <!-- Style CSS -->
+      <link rel="stylesheet" href="{{asset('plugin/fontawesome-free/css/all.min.css')}}">
+      <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
       <link rel="stylesheet" href="{{ url('painel/css/style.css ')}}">
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="{{ url('painel/css/responsive.css')}}">
@@ -107,7 +109,7 @@
                               <li class="active">
                                  <a href="#menu-design" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="true"><i class="ri-menu-3-line"></i><span>Gerenciamento de Produtos</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                                  <ul id="menu-design" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                                    <li><a href=""><i class="ri-git-commit-line"></i>Categorias</a></li>
+                                    <li><a href="{{ route('admin.categoria') }}"><i class="ri-git-commit-line"></i>Categorias</a></li>
                                     <li><a href=""><i class="ri-git-commit-line"></i>Produtos</a></li>
                                  </ul>
 
@@ -163,6 +165,7 @@
       <!-- Select2 JavaScript -->
       <script src="{{ url('painel/js/select2.min.js')}}"></script>
       <!-- Owl Carousel JavaScript -->
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script src="{{ url('painel/js/owl.carousel.min.js')}}"></script>
       <!-- Magnific Popup JavaScript -->
       <script src="{{ url('painel/js/jquery.magnific-popup.min.js')}}"></script>
@@ -170,11 +173,15 @@
       <script src="{{ url('painel/js/smooth-scrollbar.js')}}"></script>
       <!-- lottie JavaScript -->
       <script src="{{ url('painel/js/lottie.js')}}"></script>
+      <script src="{{asset('plugin/mask.jquery.js')}}"></script>
       <!-- am core JavaScript -->
       <script src="{{ url('painel/js/core.js')}}"></script>
       <!-- am charts JavaScript -->
       <script src="{{ url('painel/js/charts.js')}}"></script>
+      <script src="{{asset('plugin/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js')}}"></script>
+      <script src="{{asset('plugin/daterangepicker/daterangepicker.js')}}"></script>
       <!-- am animated JavaScript -->
+      <script src="{{asset('plugin/summernote/summernote-bs4.min.js')}}"></script>
       <script src="{{ url('painel/js/animated.js')}}"></script>
       <!-- am kelly JavaScript -->
       <script src="{{ url('painel/js/kelly.js')}}"></script>
@@ -184,5 +191,6 @@
       <script src="{{ url('painel/js/chart-custom.js')}}"></script>
       <!-- Custom JavaScript -->
       <script src="{{ url('painel/js/custom.js')}}"></script>
+      <script src="{{ url('painel/js/painel.js')}}"></script>
    </body>
 </html>

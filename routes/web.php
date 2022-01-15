@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PainelController;
 use App\Http\Controllers\Alunos\AlunosController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\painel\LucrosController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\painel\EstoqueController;
 use App\Http\Controllers\painel\PedidosController;
 use App\Http\Controllers\painel\AfiliadosController;
@@ -48,7 +49,6 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/afiliados/todos', [AfiliadosController::class, 'create'])->name('afiliados.todos');
     Route::get('/lucros', [LucrosController::class, 'index'])->name('lucros');
     Route::any('/logout/painel', [UserController::class, 'logout'])->name('painel.logout');
-
 });
 
 Route::get('admin/login', [AdminController::class, 'index'])->name('admin.login');
@@ -56,8 +56,16 @@ Route::post('admin/login/login', [AdminController::class, 'login'])->name('admin
 Route::get('admin/register', [AdminController::class, 'register'])->name('admin.login.register');
 Route::post('admin/login/store', [AdminController::class, 'store'])->name('admin.login.store');
 
-Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
-
-    Route::get('home', [PainelController::class, 'index'])->name('admin.index');
+Route::middleware(['auth:admin'])->group(function () {
+    Route::get('dashboard', [PainelController::class, 'index'])->name('admin.index');
     Route::get('usuarios', [PainelController::class, 'users'])->name('admin.users');
+});
+Route::middleware(['auth:admin'])->prefix('/cadastro')->group(function () {
+
+    Route::get('categoria_menu/{id?}', [PainelController::class, 'categorias'])->name('admin.categoria');
+    Route::post('/nova_categoria', [CategoryController::class, 'novaCategoria'])->name('novaCategoria');
+    Route::post('/atualizar_categoria', [CategoryController::class, 'atualizarCategoria'])->name('atualizarCategoria');
+    Route::post('/pesquisa_categoria', [CategoryController::class, 'pesquisaCategoria']);
+    Route::post('/pesquisa_categoria_produto', [CategoryController::class, 'pesquisaCategoriaProduto']);
+    Route::any('/excluir_categoria', [CategoryController::class, 'excluirCategoria']);
 });
