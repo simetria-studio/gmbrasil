@@ -56,7 +56,7 @@ Route::post('admin/login/login', [AdminController::class, 'login'])->name('admin
 Route::get('admin/register', [AdminController::class, 'register'])->name('admin.login.register');
 Route::post('admin/login/store', [AdminController::class, 'store'])->name('admin.login.store');
 
-Route::middleware(['auth:admin'])->group(function () {
+Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::get('dashboard', [PainelController::class, 'index'])->name('admin.index');
     Route::get('usuarios', [PainelController::class, 'users'])->name('admin.users');
 });
