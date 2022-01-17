@@ -74,4 +74,5 @@ Route::middleware(['auth:admin'])->prefix('/cadastro')->group(function () {
     Route::get('/produtos', [PainelController::class, 'indexProduto'])->name('admin.produtos');
     Route::post('/novo_produto', [ProductController::class, 'novoProduto'])->name('novoProduto');
     Route::post('/atualizar_produto', [ProductController::class, 'atualizarProduto'])->name('atualizarProduto');
+    Route::post('/inativar_produto', [ProductController::class, 'inativarProduto']);
 });

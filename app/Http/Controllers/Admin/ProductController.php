@@ -175,4 +175,11 @@ class ProductController extends Controller
         }
 
     }
+
+    public function inativarProduto(Request $request)
+    {
+        $product = Product::where('id', $request->product_id)->update(['status' => '0']);
+
+        return response()->json(['product_id' => $request->product_id]);
+    }
 }
