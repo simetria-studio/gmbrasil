@@ -9,14 +9,17 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{asset('admin/dashboard')}}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ asset('admin/dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item">Produtos</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div>
     </div>
-
+    {{-- @php
+    $image_name = '';
+    $image = '';
+    @endphp --}}
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -36,7 +39,8 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-6">
-                                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#novoProduto"><i class="fas fa-plus"></i> Novo Produto</button>
+                                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                            data-target="#novoProduto"><i class="fas fa-plus"></i> Novo Produto</button>
                                     </div>
                                 </div>
                             </div>
@@ -63,15 +67,15 @@
                                             @foreach ($product->productImage as $image)
                                                 @php
                                                     // Pegando a iamgem e tarnsformamndo em data
-                                                    if(Storage::exists($image->image_name)){
-                                                        $images         = Storage::get($image->image_name);
-                                                        $mime_types     = Storage::mimeType($image->image_name);
-                                                        $images         = 'data:'.$mime_types.';base64,'.base64_encode($images);
+                                                    if (Storage::exists($image->image_name)) {
+                                                        $images = Storage::get($image->image_name);
+                                                        $mime_types = Storage::mimeType($image->image_name);
+                                                        $images = 'data:' . $mime_types . ';base64,' . base64_encode($images);
 
                                                         // Adiconando a um array para depois ser utilizados
                                                         $data_images[] = [
-                                                            'sequence'  => $image->sequence,
-                                                            'image'     => $images
+                                                            'sequence' => $image->sequence,
+                                                            'image' => $images,
                                                         ];
                                                     }
                                                 @endphp
@@ -83,24 +87,31 @@
                                                 @endif
                                             @endforeach
                                             @php
-                                                if(Storage::exists($image_name)){
+                                                if (Storage::exists($image_name)) {
                                                     // Pegamos somente a primeira imagem a ser a principal
-                                                    $image      = Storage::get($image_name);
-                                                    $mime_type  = Storage::mimeType($image_name);
-                                                    $image      = 'data:'.$mime_type.';base64,'.base64_encode($image);
+                                                    $image = Storage::get($image_name);
+                                                    $mime_type = Storage::mimeType($image_name);
+                                                    $image = 'data:' . $mime_type . ';base64,' . base64_encode($image);
                                                 }
                                             @endphp
-                                            <tr class="tr-id-{{$product->id}}">
-                                                <td>{{$product->id}}</td>
-                                                <td><img width="100px" src="{{$image}}"></td>
-                                                <td>{{$product->name}}</td>
-                                                <td>{{$sales_unit_array[$product->sales_unit]}}</td>
-                                                <td>R$ {{number_format($product->value, 2, ',', '.')}}</td>
+                                            <tr class="tr-id-{{ $product->id }}">
+                                                <td>{{ $product->id }}</td>
+                                                <td><img width="100px" src="{{ $image }}"></td>
+                                                <td>{{ $product->name }}</td>
+                                                <td>{{ $sales_unit_array[$product->sales_unit] }}</td>
+                                                <td>R$ {{ number_format($product->value, 2, ',', '.') }}</td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="">
-                                                        <a href="#" class="btn btn-info btn-xs btn-editar" data-toggle="modal" data-target="#editarProduto" data-images="{{json_encode($data_images)}}" data-dados="{{json_encode($product)}}"><i class="fas fa-edit"></i> Alterar</a>
+                                                        <a href="#" class="btn btn-info btn-xs btn-editar"
+                                                            data-toggle="modal" data-target="#editarProduto"
+                                                            data-images="{{ json_encode($data_images) }}"
+                                                            data-dados="{{ json_encode($product) }}"><i
+                                                                class="fas fa-edit"></i> Alterar</a>
 
-                                                        <a href="#" class="btn btn-danger btn-xs btn-excluir-produto" data-toggle="modal" data-target="#excluirProduto" data-dados="{{json_encode($product)}}"><i class="fas fa-trash"></i> Apagar</a>
+                                                        <a href="#" class="btn btn-danger btn-xs btn-excluir-produto"
+                                                            data-toggle="modal" data-target="#excluirProduto"
+                                                            data-dados="{{ json_encode($product) }}"><i
+                                                                class="fas fa-trash"></i> Apagar</a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -108,12 +119,12 @@
                                         @endforelse
                                     </tbody>
                                     <tfoot>
-                                        <th colspan="8">{{$products->count()}} Produtos</th>
+                                        <th colspan="8">{{ $products->count() }} Produtos</th>
                                     </tfoot>
                                 </table>
                             </div>
 
-                            <div class="container mt-2">{{$products->links()}}</div>
+                            <div class="container mt-2">{{ $products->links() }}</div>
                         </div>
                     </div>
                 </div>
@@ -135,41 +146,55 @@
                     <div class="modal-body">
                         <ul class="nav nav-pills mb-3" id="newProduct-tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link active" id="newProduct-dadosgerais-tab" data-toggle="pill" href="#newProduct-dadosgerais" role="tab" aria-controls="newProduct-dadosgerais" aria-selected="true">Dados Gerais</a>
+                                <a class="nav-link active" id="newProduct-dadosgerais-tab" data-toggle="pill"
+                                    href="#newProduct-dadosgerais" role="tab" aria-controls="newProduct-dadosgerais"
+                                    aria-selected="true">Dados Gerais</a>
                             </li>
                             <li class="nav-item atributo-tab d-none" role="presentation">
-                                <a class="nav-link" id="newProduct-atributo-tab" data-toggle="pill" href="#newProduct-atributo" role="tab" aria-controls="newProduct-atributo" aria-selected="false">Atributos/Variações</a>
+                                <a class="nav-link" id="newProduct-atributo-tab" data-toggle="pill"
+                                    href="#newProduct-atributo" role="tab" aria-controls="newProduct-atributo"
+                                    aria-selected="false">Atributos/Variações</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="newProduct-imagens-tab" data-toggle="pill" href="#newProduct-imagens" role="tab" aria-controls="newProduct-imagens" aria-selected="false">Imagens</a>
+                                <a class="nav-link" id="newProduct-imagens-tab" data-toggle="pill"
+                                    href="#newProduct-imagens" role="tab" aria-controls="newProduct-imagens"
+                                    aria-selected="false">Imagens</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="newProduct-informacao-tab" data-toggle="pill" href="#newProduct-informacao" role="tab" aria-controls="newProduct-informacao" aria-selected="false">Informações</a>
+                                <a class="nav-link" id="newProduct-informacao-tab" data-toggle="pill"
+                                    href="#newProduct-informacao" role="tab" aria-controls="newProduct-informacao"
+                                    aria-selected="false">Informações</a>
                             </li>
                         </ul>
 
                         <div class="tab-content" id="newProduct-tabContent">
-                            <div class="tab-pane fade show active" id="newProduct-dadosgerais" role="tabpanel" aria-labelledby="newProduct-dadosgerais-tab">
+                            <div class="tab-pane fade show active" id="newProduct-dadosgerais" role="tabpanel"
+                                aria-labelledby="newProduct-dadosgerais-tab">
                                 <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-2">
                                         <label for="code">Codigo</label>
-                                        <input type="text" name="code" class="form-control form-control-sm" placeholder="Codigo do Produto">
+                                        <input type="text" name="code" class="form-control form-control-sm"
+                                            placeholder="Codigo do Produto">
                                     </div>
                                     <div class="form-group col-12 col-md-4">
                                         <label for="name">Nome</label>
-                                        <input type="text" name="name" class="form-control form-control-sm" placeholder="Nome do Produto">
+                                        <input type="text" name="name" class="form-control form-control-sm"
+                                            placeholder="Nome do Produto">
                                     </div>
                                     <div class="form-group col-12 col-md-6">
                                         <label for="brief_description">Breve Descrição</label>
-                                        <input type="text" name="brief_description" class="form-control form-control-sm" placeholder="Descrição Breve do Produto">
+                                        <input type="text" name="brief_description" class="form-control form-control-sm"
+                                            placeholder="Descrição Breve do Produto">
                                     </div>
                                     <div class="form-group col-12 col-md-2">
                                         <label for="value">Valor R$</label>
-                                        <input type="text" id="valor" name="value" class="form-control form-control-sm" placeholder="Valor Real do Produto">
+                                        <input type="text" id="valor" name="value" class="form-control form-control-sm"
+                                            placeholder="Valor Real do Produto">
                                     </div>
                                     <div class="form-group col-12 col-md-2">
                                         <label for="brand">Marca</label>
-                                        <input type="text" name="brand" class="form-control form-control-sm" placeholder="Marca do Produto">
+                                        <input type="text" name="brand" class="form-control form-control-sm"
+                                            placeholder="Marca do Produto">
                                     </div>
                                     <div class="form-group col-12 col-md-3">
                                         <label for="sales_unit">Unidade de Venda</label>
@@ -226,23 +251,29 @@
                                 <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-3">
                                         <label for="main_category">Categoria Principal</label>
-                                        <select name="main_category" class="form-control form-control-sm select2 main_category">
+                                        <select name="main_category"
+                                            class="form-control form-control-sm select2 main_category">
                                             <option value="" data-new_category="category_id"> - Nova Categoria - </option>
                                             @foreach ($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
 
                                         <div class="mt-1">
-                                            <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#novaCategoria"><i class="fas fa-plus"></i> Nova Categoria</button>
+                                            <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal"
+                                                data-target="#novaCategoria"><i class="fas fa-plus"></i> Nova
+                                                Categoria</button>
                                         </div>
                                     </div>
                                     <div class="form-group col-12 col-md-3">
                                         <label for="sub_category">Sub Categoria</label>
-                                        <select name="sub_category[]" class="form-control form-control-sm select2 sub_category" multiple></select>
+                                        <select name="sub_category[]"
+                                            class="form-control form-control-sm select2 sub_category" multiple></select>
 
                                         <div class="mt-1 d-none">
-                                            <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#novaCategoria"><i class="fas fa-plus"></i> Nova Sub Categoria</button>
+                                            <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal"
+                                                data-target="#novaCategoria"><i class="fas fa-plus"></i> Nova Sub
+                                                Categoria</button>
                                         </div>
                                     </div>
                                 </div>
@@ -326,7 +357,8 @@
                                     @endforeach
                                 </div>
                             </div> --}}
-                            <div class="tab-pane fade" id="newProduct-imagens" role="tabpanel" aria-labelledby="newProduct-imagens-tab">
+                            <div class="tab-pane fade" id="newProduct-imagens" role="tabpanel"
+                                aria-labelledby="newProduct-imagens-tab">
                                 <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-6">
                                         <div class="custom-file">
@@ -338,7 +370,8 @@
                                     </div>
                                     <div class="form-group col-12 col-md-6">
                                         <div class="custom-file">
-                                            <input name="img_multipla[]" type="file" class="custom-file-input img_multipla" multiple>
+                                            <input name="img_multipla[]" type="file" class="custom-file-input img_multipla"
+                                                multiple>
                                             <label class="custom-file-label" for="img_multipla">Multiplas Fotos</label>
                                         </div>
 
@@ -346,7 +379,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="newProduct-informacao" role="tabpanel" aria-labelledby="newProduct-informacao-tab">
+                            <div class="tab-pane fade" id="newProduct-informacao" role="tabpanel"
+                                aria-labelledby="newProduct-informacao-tab">
                                 <div class="form-row my-2">
                                     <div class="form-group col-12">
                                         <textarea name="description" class="textarea"></textarea>
@@ -356,8 +390,11 @@
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Fechar</button>
-                        <button type="button" class="btn btn-success btn-salvar" data-update_table="S" data-save_target="#postNovoProduto" data-save_route="{{route('novoProduto')}}"><i class="fas fa-save"></i> Salvar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i>
+                            Fechar</button>
+                        <button type="button" class="btn btn-success btn-salvar" data-update_table="S"
+                            data-save_target="#postNovoProduto" data-save_route="{{ route('novoProduto') }}"><i
+                                class="fas fa-save"></i> Salvar</button>
                     </div>
                 </form>
             </div>
@@ -379,33 +416,45 @@
                     <div class="modal-body">
                         <ul class="nav nav-pills mb-3" id="editProduct-tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link active" id="editProduct-dadosgerais-tab" data-toggle="pill" href="#editProduct-dadosgerais" role="tab" aria-controls="editProduct-dadosgerais" aria-selected="true">Dados Gerais</a>
+                                <a class="nav-link active" id="editProduct-dadosgerais-tab" data-toggle="pill"
+                                    href="#editProduct-dadosgerais" role="tab" aria-controls="editProduct-dadosgerais"
+                                    aria-selected="true">Dados Gerais</a>
                             </li>
                             <li class="nav-item atributo-tab d-none" role="presentation">
-                                <a class="nav-link" id="editProduct-atributo-tab" data-toggle="pill" href="#editProduct-atributo" role="tab" aria-controls="editProduct-atributo" aria-selected="false">Atributos/Variações</a>
+                                <a class="nav-link" id="editProduct-atributo-tab" data-toggle="pill"
+                                    href="#editProduct-atributo" role="tab" aria-controls="editProduct-atributo"
+                                    aria-selected="false">Atributos/Variações</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="editProduct-imagens-tab" data-toggle="pill" href="#editProduct-imagens" role="tab" aria-controls="editProduct-imagens" aria-selected="false">Imagens</a>
+                                <a class="nav-link" id="editProduct-imagens-tab" data-toggle="pill"
+                                    href="#editProduct-imagens" role="tab" aria-controls="editProduct-imagens"
+                                    aria-selected="false">Imagens</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="editProduct-informacao-tab" data-toggle="pill" href="#editProduct-informacao" role="tab" aria-controls="editProduct-informacao" aria-selected="false">Informações</a>
+                                <a class="nav-link" id="editProduct-informacao-tab" data-toggle="pill"
+                                    href="#editProduct-informacao" role="tab" aria-controls="editProduct-informacao"
+                                    aria-selected="false">Informações</a>
                             </li>
                         </ul>
 
                         <div class="tab-content" id="editProduct-tabContent">
-                            <div class="tab-pane fade show active" id="editProduct-dadosgerais" role="tabpanel" aria-labelledby="editProduct-dadosgerais-tab">
+                            <div class="tab-pane fade show active" id="editProduct-dadosgerais" role="tabpanel"
+                                aria-labelledby="editProduct-dadosgerais-tab">
                                 <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-2">
                                         <label for="code">Codigo</label>
-                                        <input type="text" name="code" class="form-control form-control-sm" placeholder="Codigo do Produto">
+                                        <input type="text" name="code" class="form-control form-control-sm"
+                                            placeholder="Codigo do Produto">
                                     </div>
                                     <div class="form-group col-12 col-md-4">
                                         <label for="name">Nome</label>
-                                        <input type="text" name="name" class="form-control form-control-sm" placeholder="Nome do Produto">
+                                        <input type="text" name="name" class="form-control form-control-sm"
+                                            placeholder="Nome do Produto">
                                     </div>
                                     <div class="form-group col-12 col-md-6">
                                         <label for="brief_description">Breve Descrição</label>
-                                        <input type="text" name="brief_description" class="form-control form-control-sm" placeholder="Descrição Breve do Produto">
+                                        <input type="text" name="brief_description" class="form-control form-control-sm"
+                                            placeholder="Descrição Breve do Produto">
                                     </div>
                                     <div class="form-group col-12 col-md-3">
                                         <label for="sales_unit">Unidade de Venda</label>
@@ -418,11 +467,13 @@
                                     </div>
                                     <div class="form-group col-12 col-md-2">
                                         <label for="value">Valor R$</label>
-                                        <input type="text" name="value" class="form-control form-control-sm" placeholder="Valor Real do Produto">
+                                        <input type="text" name="value" class="form-control form-control-sm"
+                                            placeholder="Valor Real do Produto">
                                     </div>
                                     <div class="form-group col-12 col-md-2">
                                         <label for="brand">Marca</label>
-                                        <input type="text" name="brand" class="form-control form-control-sm" placeholder="Marca do Produto">
+                                        <input type="text" name="brand" class="form-control form-control-sm"
+                                            placeholder="Marca do Produto">
                                     </div>
                                     <div class="form-group col-12 col-md-3">
                                         <label for="product_type">Tipo de Produto</label>
@@ -437,19 +488,23 @@
                                 <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-2">
                                         <label for="weight">Peso (kg)</label>
-                                        <input type="text" name="weight" class="form-control form-control-sm" placeholder="Peso do Produto">
+                                        <input type="text" name="weight" class="form-control form-control-sm"
+                                            placeholder="Peso do Produto">
                                     </div>
                                     <div class="form-group col-12 col-md-2">
                                         <label for="height">Altura (cm)</label>
-                                        <input type="text" name="height" class="form-control form-control-sm" placeholder="Altura do Produto">
+                                        <input type="text" name="height" class="form-control form-control-sm"
+                                            placeholder="Altura do Produto">
                                     </div>
                                     <div class="form-group col-12 col-md-2">
                                         <label for="width">Largura (cm)</label>
-                                        <input type="text" name="width" class="form-control form-control-sm" placeholder="Largura do Produto">
+                                        <input type="text" name="width" class="form-control form-control-sm"
+                                            placeholder="Largura do Produto">
                                     </div>
                                     <div class="form-group col-12 col-md-2">
                                         <label for="length">Comprimento (cm)</label>
-                                        <input type="text" name="length" class="form-control form-control-sm" placeholder="Comprimento do Produto">
+                                        <input type="text" name="length" class="form-control form-control-sm"
+                                            placeholder="Comprimento do Produto">
                                     </div>
                                 </div>
 
@@ -470,23 +525,29 @@
                                 <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-3">
                                         <label for="main_category">Categoria Principal</label>
-                                        <select name="main_category" class="form-control form-control-sm select2 main_category">
+                                        <select name="main_category"
+                                            class="form-control form-control-sm select2 main_category">
                                             <option value="" data-new_category="category_id"> - Nova Categoria - </option>
                                             @foreach ($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
 
                                         <div class="mt-1">
-                                            <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#novaCategoria"><i class="fas fa-plus"></i> Nova Categoria</button>
+                                            <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal"
+                                                data-target="#novaCategoria"><i class="fas fa-plus"></i> Nova
+                                                Categoria</button>
                                         </div>
                                     </div>
                                     <div class="form-group col-12 col-md-3">
                                         <label for="sub_category">Sub Categoria</label>
-                                        <select name="sub_category[]" class="form-control form-control-sm select2 sub_category" multiple></select>
+                                        <select name="sub_category[]"
+                                            class="form-control form-control-sm select2 sub_category" multiple></select>
 
                                         <div class="mt-1 d-none">
-                                            <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#novaCategoria"><i class="fas fa-plus"></i> Nova Sub Categoria</button>
+                                            <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal"
+                                                data-target="#novaCategoria"><i class="fas fa-plus"></i> Nova Sub
+                                                Categoria</button>
                                         </div>
                                     </div>
                                 </div>
@@ -570,11 +631,13 @@
                                     @endforeach
                                 </div>
                             </div> --}}
-                            <div class="tab-pane fade" id="editProduct-imagens" role="tabpanel" aria-labelledby="editProduct-imagens-tab">
+                            <div class="tab-pane fade" id="editProduct-imagens" role="tabpanel"
+                                aria-labelledby="editProduct-imagens-tab">
                                 <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-6">
                                         <div class="custom-file">
-                                            <input name="img_principal" type="file" class="custom-file-input img_principal">
+                                            <input name="img_principal" type="file"
+                                                class="custom-file-input img_principal">
                                             <label class="custom-file-label" for="img_principal">Foto Principal</label>
                                         </div>
 
@@ -582,7 +645,8 @@
                                     </div>
                                     <div class="form-group col-12 col-md-6">
                                         <div class="custom-file">
-                                            <input name="img_multipla[]" type="file" class="custom-file-input img_multipla" multiple>
+                                            <input name="img_multipla[]" type="file" class="custom-file-input img_multipla"
+                                                multiple>
                                             <label class="custom-file-label" for="img_multipla">Multiplas Fotos</label>
                                         </div>
 
@@ -590,7 +654,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="editProduct-informacao" role="tabpanel" aria-labelledby="editProduct-informacao-tab">
+                            <div class="tab-pane fade" id="editProduct-informacao" role="tabpanel"
+                                aria-labelledby="editProduct-informacao-tab">
                                 <div class="form-row my-2">
                                     <div class="form-group col-12">
                                         <textarea name="description" class="textarea"></textarea>
@@ -600,8 +665,11 @@
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Fechar</button>
-                        <button type="button" class="btn btn-success btn-salvar" data-save_target="#postEditarProduto" data-save_route="{{route('atualizarProduto')}}"><i class="fas fa-save"></i> Salvar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                class="fas fa-times"></i> Fechar</button>
+                        <button type="button" class="btn btn-success btn-salvar" data-save_target="#postEditarProduto"
+                            data-save_route="{{ route('atualizarProduto') }}"><i class="fas fa-save"></i>
+                            Salvar</button>
                     </div>
                 </form>
             </div>
@@ -624,8 +692,10 @@
                         <p>Tem Certeza que gostaria de inativar esse produto <span class="product-name"></span></p>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Fechar</button>
-                        <button type="button" class="btn btn-danger btn-confirma-exclusao-produto"><i class="fas fa-trash"></i> Inativar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                class="fas fa-times"></i> Fechar</button>
+                        <button type="button" class="btn btn-danger btn-confirma-exclusao-produto"><i
+                                class="fas fa-trash"></i> Inativar</button>
                     </div>
                 </form>
             </div>
@@ -649,13 +719,17 @@
                         <div class="form-row">
                             <div class="form-group col-12">
                                 <label for="category_name">Nome da Categoria</label>
-                                <input type="text" name="category_name" class="form-control form-control-sm" placeholder="Nome da Categoria">
+                                <input type="text" name="category_name" class="form-control form-control-sm"
+                                    placeholder="Nome da Categoria">
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Fechar</button>
-                        <button type="button" class="btn btn-success btn-salvar" data-save_target="#postProductNovaCategoria" data-save_route="{{route('novaCategoria')}}"><i class="fas fa-save"></i> Salvar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                class="fas fa-times"></i> Fechar</button>
+                        <button type="button" class="btn btn-success btn-salvar"
+                            data-save_target="#postProductNovaCategoria" data-save_route="{{ route('novaCategoria') }}"><i
+                                class="fas fa-save"></i> Salvar</button>
                     </div>
                 </form>
             </div>
