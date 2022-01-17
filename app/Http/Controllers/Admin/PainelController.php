@@ -12,9 +12,9 @@ use App\Http\Controllers\Controller;
 class PainelController extends Controller
 {
     public $sales_unit_array = [
-        'P' => 'Peça',
-        'M' => 'Metro',
-        'MQ' => 'Metro Quadrado'
+        'P' => 'Curso',
+        'M' => 'Produto',
+        'MQ' => 'Serviço'
     ];
 
     public function index()
