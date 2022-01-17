@@ -175,22 +175,22 @@
                                         <label for="sales_unit">Unidade de Venda</label>
                                         <select name="sales_unit" class="form-control form-control-sm select2">
                                             <option value=""> - Selecione um Opção - </option>
-                                            <option value="P">Peça</option>
-                                            <option value="M">Metro</option>
-                                            <option value="MQ">Metro Quadrado</option>
+                                            <option value="P">Curso</option>
+                                            <option value="M">Produto</option>
+                                            <option value="MQ">Serviço</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-12 col-md-3">
+                                    {{-- <div class="form-group col-12 col-md-3">
                                         <label for="product_type">Tipo de Produto</label>
                                         <select name="product_type" class="form-control form-control-sm select2">
                                             <option value=""> - Selecione um Opção - </option>
                                             <option value="simples">Simples</option>
                                             <option value="variacoes">Variações</option>
                                         </select>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
-                                <div class="form-row my-1">
+                                {{-- <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-2">
                                         <label for="weight">Peso (kg)</label>
                                         <input type="text" name="weight" class="form-control form-control-sm" placeholder="Peso do Produto">
@@ -207,9 +207,9 @@
                                         <label for="length">Comprimento (cm)</label>
                                         <input type="text" name="length" class="form-control form-control-sm" placeholder="Comprimento do Produto">
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="form-row my-1">
+                                {{-- <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-4">
                                         <div class="icheck-primary">
                                             <input type="checkbox" id="has_preparation_check" class="has_preparation">
@@ -221,7 +221,7 @@
                                         <label for="preparation_time">Dias</label>
                                         <input type="text" class="form-control form-control-sm" name="preparation_time">
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-3">
