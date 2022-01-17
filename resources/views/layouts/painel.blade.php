@@ -22,6 +22,7 @@
       <link href='{{ url('painel/fullcalendar/daygrid/main.css')}}' rel='stylesheet' />
       <link href='{{ url('painel/fullcalendar/timegrid/main.css')}}' rel='stylesheet' />
       <link href='{{ url('painel/fullcalendar/list/main.css')}}' rel='stylesheet' />
+      <link href='{{ url('painel/custom/style.min.css')}}' rel='stylesheet' />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
    </head>
    <body class="top-tab-horizontal">
@@ -110,7 +111,7 @@
                                  <a href="#menu-design" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="true"><i class="ri-menu-3-line"></i><span>Gerenciamento de Produtos</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                                  <ul id="menu-design" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                                     <li><a href="{{ route('admin.categoria') }}"><i class="ri-git-commit-line"></i>Categorias</a></li>
-                                    <li><a href=""><i class="ri-git-commit-line"></i>Produtos</a></li>
+                                    <li><a href="{{ route('admin.produtos') }}"><i class="ri-git-commit-line"></i>Produtos</a></li>
                                  </ul>
 
                               </li>

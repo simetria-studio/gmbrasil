@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Routing\Route as RoutingRoute;
 use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Admin\PainelController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Alunos\AlunosController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\painel\LucrosController;
@@ -68,4 +69,9 @@ Route::middleware(['auth:admin'])->prefix('/cadastro')->group(function () {
     Route::post('/pesquisa_categoria', [CategoryController::class, 'pesquisaCategoria']);
     Route::post('/pesquisa_categoria_produto', [CategoryController::class, 'pesquisaCategoriaProduto']);
     Route::any('/excluir_categoria', [CategoryController::class, 'excluirCategoria']);
+
+
+    Route::get('/produtos', [PainelController::class, 'indexProduto'])->name('admin.produtos');
+    Route::post('/novo_produto', [ProductController::class, 'novoProduto'])->name('novoProduto');
+    Route::post('/atualizar_produto', [ProductController::class, 'atualizarProduto'])->name('atualizarProduto');
 });
