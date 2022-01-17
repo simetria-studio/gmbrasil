@@ -186,19 +186,19 @@
                                         <input type="text" name="brief_description" class="form-control form-control-sm"
                                             placeholder="Descrição Breve do Produto">
                                     </div>
-                                    <div class="form-group col-12 col-md-2">
+                                    <div class="form-group col-12 col-md-4">
                                         <label for="value">Valor R$</label>
                                         <input type="text" id="valor" name="value" class="form-control form-control-sm"
                                             placeholder="Valor Real do Produto">
                                     </div>
-                                    <div class="form-group col-12 col-md-2">
+                                    <div class="form-group col-12 col-md-4">
                                         <label for="brand">Marca</label>
                                         <input type="text" name="brand" class="form-control form-control-sm"
                                             placeholder="Marca do Produto">
                                     </div>
-                                    <div class="form-group col-12 col-md-3">
-                                        <label for="sales_unit">Unidade de Venda</label>
-                                        <select name="sales_unit" class="form-control form-control-sm select2">
+                                    <div class="form-group col-12 col-md-4">
+                                        <label for="sales_unit">Tipo de Venda</label>
+                                        <select name="sales_unit" class="form-control select2">
                                             <option value=""> - Selecione um Opção - </option>
                                             <option value="P">Curso</option>
                                             <option value="M">Produto</option>
@@ -383,7 +383,7 @@
                                 aria-labelledby="newProduct-informacao-tab">
                                 <div class="form-row my-2">
                                     <div class="form-group col-12">
-                                        <textarea name="description" class="textarea"></textarea>
+                                        <textarea name="description" class="form-control"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -507,7 +507,7 @@
                                             placeholder="Comprimento do Produto">
                                     </div>
                                 </div> --}}
-{{-- 
+{{--
                                 <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-4">
                                         <div class="icheck-primary">

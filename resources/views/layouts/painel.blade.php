@@ -11,11 +11,16 @@
       <link rel="stylesheet" href="{{ url('painel/css/bootstrap.min.css ') }}">
       <!-- Typography CSS -->
       <link rel="stylesheet" href="{{ url('painel/css/typography.css')}} ">
+      <link rel="stylesheet" href="{{asset('plugin/select2/css/select2.min.css')}}">
+      <link rel="stylesheet" href="{{asset('plugin/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
       <!-- Style CSS -->
       <link rel="stylesheet" href="{{asset('plugin/fontawesome-free/css/all.min.css')}}">
       <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
       <link rel="stylesheet" href="{{ url('painel/css/style.css ')}}">
       <!-- Responsive CSS -->
+      <link rel="stylesheet" href="{{asset('plugin/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+
+      <link rel="stylesheet" href="{{asset('plugin/summernote/summernote-bs4.min.css')}}">
       <link rel="stylesheet" href="{{ url('painel/css/responsive.css')}}">
       <!-- Full calendar -->
       <link href='{{ url('painel/fullcalendar/core/main.css')}}' rel='stylesheet' />
@@ -164,7 +169,8 @@
       <!-- Slick JavaScript -->
       <script src="{{ url('painel/js/slick.min.js')}}"></script>
       <!-- Select2 JavaScript -->
-      <script src="{{ url('painel/js/select2.min.js')}}"></script>
+      {{-- <script src="{{ url('painel/js/select2.min.js')}}"></script> --}}
+      <script src="{{asset('plugin/select2/js/select2.full.min.js')}}"></script>
       <!-- Owl Carousel JavaScript -->
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script src="{{ url('painel/js/owl.carousel.min.js')}}"></script>
@@ -191,6 +197,7 @@
       <!-- Chart Custom JavaScript -->
       <script src="{{ url('painel/js/chart-custom.js')}}"></script>
       <!-- Custom JavaScript -->
+      <script src="{{asset('plugin/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
       <script src="{{ url('painel/custom/jquery.maskMoney.min.js') }}"></script>
       <script src="{{ url('painel/js/custom.js')}}"></script>
       <script src="{{ url('painel/js/painel.js')}}"></script>
