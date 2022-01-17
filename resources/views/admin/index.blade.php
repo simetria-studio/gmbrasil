@@ -17,7 +17,7 @@
                 <div class="iq-card-body">
                     <div class="d-flex align-items-center justify-content-between">
                         <h5>Produtos</h5>
-                        <h3>0</h3>
+                        <h3>{{ $products->count() }}</h3>
                     </div>
                 </div>
             </div>

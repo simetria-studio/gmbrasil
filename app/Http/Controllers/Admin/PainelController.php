@@ -20,6 +20,7 @@ class PainelController extends Controller
     public function index()
     {
         $users = User::get();
+        $products = Product::get();
         return view('admin.index', get_defined_vars());
     }
 
