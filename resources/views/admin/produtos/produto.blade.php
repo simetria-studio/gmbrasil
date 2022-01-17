@@ -24,9 +24,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-primary card-outline">
+                    <div class="iq-card card-primary card-outline">
                         {{-- Header do Card --}}
-                        <div class="card-header">
+                        <div class="iq-card-header">
                             <h3 class="card-title">Produtos</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         {{-- Corpo do Card --}}
-                        <div class="card-body pad">
+                        <div class="iq-card-body pad">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-6">
@@ -45,8 +45,8 @@
                                 </div>
                             </div>
 
-                            <div id="table" class="container mt-2 table-responsive table-editable">
-                                <table class="table">
+                            <div id="table" class="container mt-2 table-responsive">
+                                <table class="table table-dark">
                                     <thead>
                                         <tr>
                                             <th>Nº</th>
