@@ -102,7 +102,7 @@
                                                 <td>R$ {{ number_format($product->value, 2, ',', '.') }}</td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="">
-                                                        <a href="#" class="btn btn-info btn-xs btn-editar"
+                                                        <a href="#" class="btn btn-primary btn-xs btn-editar"
                                                             data-toggle="modal" data-target="#editarProduto"
                                                             data-images="{{ json_encode($data_images) }}"
                                                             data-dados="{{ json_encode($product) }}"><i
@@ -456,7 +456,7 @@
                                         <input type="text" name="brief_description" class="form-control form-control-sm"
                                             placeholder="Descrição Breve do Produto">
                                     </div>
-                                    <div class="form-group col-12 col-md-3">
+                                    <div class="form-group col-12 col-md-4">
                                         <label for="sales_unit">Unidade de Venda</label>
                                         <select name="sales_unit" class="form-control form-control-sm select2 sales_unit">
                                             <option value=""> - Selecione um Opção - </option>
@@ -465,12 +465,12 @@
                                             <option value="MQ">Serviço</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-12 col-md-2">
+                                    <div class="form-group col-12 col-md-4">
                                         <label for="value">Valor R$</label>
                                         <input type="text" name="value" class="form-control form-control-sm"
                                             placeholder="Valor Real do Produto">
                                     </div>
-                                    <div class="form-group col-12 col-md-2">
+                                    <div class="form-group col-12 col-md-4">
                                         <label for="brand">Marca</label>
                                         <input type="text" name="brand" class="form-control form-control-sm"
                                             placeholder="Marca do Produto">
@@ -658,7 +658,7 @@
                                 aria-labelledby="editProduct-informacao-tab">
                                 <div class="form-row my-2">
                                     <div class="form-group col-12">
-                                        <textarea name="description" class="textarea"></textarea>
+                                        <textarea name="description" class="form-control"></textarea>
                                     </div>
                                 </div>
                             </div>
