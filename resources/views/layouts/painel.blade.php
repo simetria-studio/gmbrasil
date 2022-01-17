@@ -191,6 +191,7 @@
       <!-- Chart Custom JavaScript -->
       <script src="{{ url('painel/js/chart-custom.js')}}"></script>
       <!-- Custom JavaScript -->
+      <script src="{{ url('painel/custom/jquery.maskMoney.min.js') }}"></script>
       <script src="{{ url('painel/js/custom.js')}}"></script>
       <script src="{{ url('painel/js/painel.js')}}"></script>
    </body>

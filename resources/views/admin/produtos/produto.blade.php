@@ -165,7 +165,7 @@
                                     </div>
                                     <div class="form-group col-12 col-md-2">
                                         <label for="value">Valor R$</label>
-                                        <input type="text" name="value" class="form-control form-control-sm" placeholder="Valor Real do Produto">
+                                        <input type="text" id="valor" name="value" class="form-control form-control-sm" placeholder="Valor Real do Produto">
                                     </div>
                                     <div class="form-group col-12 col-md-2">
                                         <label for="brand">Marca</label>
