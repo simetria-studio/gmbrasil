@@ -930,3 +930,5 @@ $(document).ready(function(){
             });
     });
 });
+
+$("#valor").maskMoney({symbol:'R$ ', thousands:'.', decimal:',', symbolStay: true});

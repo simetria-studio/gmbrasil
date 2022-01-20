@@ -14,7 +14,7 @@
                     <div class="container my-3">
                         <div class="row">
                             <div class="col-md-6">
-                                <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
+                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
                                     data-target="#novaCategoria"><i class="fas fa-plus"></i> Nova Categoria</button>
                             </div>
                             <div class="col-md-6 text-right">
@@ -25,9 +25,9 @@
                             </div>
                         </div>
                     </div>
-                    <div id="table" class="table-editable">
+                    <div id="table" class="container mt-2 table-responsive">
 
-                        <table class="table ">
+                        <table class="table table-dark">
                             <thead>
                                 <tr>
                                     <th>Nº</th>

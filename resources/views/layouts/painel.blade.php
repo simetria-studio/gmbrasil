@@ -11,17 +11,23 @@
       <link rel="stylesheet" href="{{ url('painel/css/bootstrap.min.css ') }}">
       <!-- Typography CSS -->
       <link rel="stylesheet" href="{{ url('painel/css/typography.css')}} ">
+      <link rel="stylesheet" href="{{asset('plugin/select2/css/select2.min.css')}}">
+      <link rel="stylesheet" href="{{asset('plugin/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
       <!-- Style CSS -->
       <link rel="stylesheet" href="{{asset('plugin/fontawesome-free/css/all.min.css')}}">
       <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
       <link rel="stylesheet" href="{{ url('painel/css/style.css ')}}">
       <!-- Responsive CSS -->
+      <link rel="stylesheet" href="{{asset('plugin/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+
+      <link rel="stylesheet" href="{{asset('plugin/summernote/summernote-bs4.min.css')}}">
       <link rel="stylesheet" href="{{ url('painel/css/responsive.css')}}">
       <!-- Full calendar -->
       <link href='{{ url('painel/fullcalendar/core/main.css')}}' rel='stylesheet' />
       <link href='{{ url('painel/fullcalendar/daygrid/main.css')}}' rel='stylesheet' />
       <link href='{{ url('painel/fullcalendar/timegrid/main.css')}}' rel='stylesheet' />
       <link href='{{ url('painel/fullcalendar/list/main.css')}}' rel='stylesheet' />
+      <link href='{{ url('painel/custom/style.min.css')}}' rel='stylesheet' />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
    </head>
    <body class="top-tab-horizontal">
@@ -110,7 +116,7 @@
                                  <a href="#menu-design" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="true"><i class="ri-menu-3-line"></i><span>Gerenciamento de Produtos</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                                  <ul id="menu-design" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                                     <li><a href="{{ route('admin.categoria') }}"><i class="ri-git-commit-line"></i>Categorias</a></li>
-                                    <li><a href=""><i class="ri-git-commit-line"></i>Produtos</a></li>
+                                    <li><a href="{{ route('admin.produtos') }}"><i class="ri-git-commit-line"></i>Produtos</a></li>
                                  </ul>
 
                               </li>
@@ -163,7 +169,8 @@
       <!-- Slick JavaScript -->
       <script src="{{ url('painel/js/slick.min.js')}}"></script>
       <!-- Select2 JavaScript -->
-      <script src="{{ url('painel/js/select2.min.js')}}"></script>
+      {{-- <script src="{{ url('painel/js/select2.min.js')}}"></script> --}}
+      <script src="{{asset('plugin/select2/js/select2.full.min.js')}}"></script>
       <!-- Owl Carousel JavaScript -->
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script src="{{ url('painel/js/owl.carousel.min.js')}}"></script>
@@ -190,6 +197,8 @@
       <!-- Chart Custom JavaScript -->
       <script src="{{ url('painel/js/chart-custom.js')}}"></script>
       <!-- Custom JavaScript -->
+      <script src="{{asset('plugin/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+      <script src="{{ url('painel/custom/jquery.maskMoney.min.js') }}"></script>
       <script src="{{ url('painel/js/custom.js')}}"></script>
       <script src="{{ url('painel/js/painel.js')}}"></script>
    </body>
