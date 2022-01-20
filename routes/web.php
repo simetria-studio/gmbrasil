@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CepController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Loja\LojaController;
 use Illuminate\Routing\Route as RoutingRoute;
 use App\Http\Controllers\Auth\AdminController;
+use App\Http\Controllers\Loja\DetailController;
 use App\Http\Controllers\Admin\PainelController;
 use App\Http\Controllers\Alunos\AlunosController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -32,7 +34,6 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('buscacep', [CepController::class, 'buscaCep'])->name('address.cep');
 Route::post('register-user', [UserController::class, 'store'])->name('register.user');
 Route::post('login-user', [UserController::class, 'login'])->name('login.user');
-
 
 
 
@@ -69,3 +70,7 @@ Route::middleware(['auth:admin'])->prefix('/cadastro')->group(function () {
     Route::post('/pesquisa_categoria_produto', [CategoryController::class, 'pesquisaCategoriaProduto']);
     Route::any('/excluir_categoria', [CategoryController::class, 'excluirCategoria']);
 });
+
+
+Route::get('loja', [LojaController::class, 'index'])->name('loja');
+Route::get('product-detail', [DetailController::class, 'index'])->name('product-detail');
