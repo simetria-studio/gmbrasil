@@ -214,7 +214,7 @@
                                 <div class="iq-card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <img src="{{ asset('dark-html/images/booking/cart.png') }}" alt="" height="40"
+                                            <img src="{{ asset('dark-html/images/booking/03.png') }}" alt="" height="40"
                                                 width="50">
                                             <span>Cartão de Débito 12XX XXXX XXXX 0000</span>
                                         </div>
