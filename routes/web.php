@@ -13,6 +13,7 @@ use App\Http\Controllers\Alunos\AlunosController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\painel\LucrosController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Loja\cartController;
 use App\Http\Controllers\painel\EstoqueController;
 use App\Http\Controllers\painel\PedidosController;
 use App\Http\Controllers\painel\AfiliadosController;
@@ -81,3 +82,4 @@ Route::middleware(['auth:admin'])->prefix('/cadastro')->group(function () {
 
 Route::get('loja', [LojaController::class, 'index'])->name('loja');
 Route::get('product-detail', [DetailController::class, 'index'])->name('product-detail');
+Route::get('cart', [cartController::class, 'index'])->name('cart');
