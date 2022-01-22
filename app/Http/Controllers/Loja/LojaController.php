@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Loja;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class LojaController extends Controller
 {
@@ -14,7 +15,9 @@ class LojaController extends Controller
      */
     public function index()
     {
-        return view('loja.index');
+        $products = Product::where('status', '1')->with(['productImage', 'productCategory'])->get();
+        // $sales_unit_array = $this->sales_unit_array;
+        return view('loja.index', get_defined_vars());
     }
 
     /**

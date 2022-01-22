@@ -51,6 +51,10 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/afiliados/todos', [AfiliadosController::class, 'create'])->name('afiliados.todos');
     Route::get('/lucros', [LucrosController::class, 'index'])->name('lucros');
     Route::any('/logout/painel', [UserController::class, 'logout'])->name('painel.logout');
+
+
+    Route::get('shop', [LojaController::class, 'index'])->name('loja');
+
 });
 
 Route::get('admin/login', [AdminController::class, 'index'])->name('admin.login');
@@ -79,5 +83,4 @@ Route::middleware(['auth:admin'])->prefix('/cadastro')->group(function () {
 });
 
 
-Route::get('loja', [LojaController::class, 'index'])->name('loja');
-Route::get('product-detail', [DetailController::class, 'index'])->name('product-detail');
+

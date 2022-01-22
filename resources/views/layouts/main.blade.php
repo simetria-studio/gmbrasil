@@ -36,7 +36,7 @@
                     <div class="header-menu">
                         <a class="menu-link is-active" href="#">Home</a>
                         <a class="menu-link notify" href="#">Carteira</a>
-                        <a class="menu-link" href="#">Loja</a>
+                        <a class="menu-link" href="{{ route('loja') }}">Loja</a>
                         <a class="menu-link notify" href="#">Suporte</a>
                     </div>
                     <div class="search-bar">
