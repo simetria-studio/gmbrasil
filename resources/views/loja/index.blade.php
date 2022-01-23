@@ -65,6 +65,7 @@
                                     <div class="row">
                                         @foreach ($products as $product)
                                             @php
+                                                $image = '';
                                                 // Pegamos somente a primeira imagem a ser a principal
                                                 $image = Storage::get($product->productImage[0]->image_name);
                                                 $mime_type = Storage::mimeType($product->productImage[0]->image_name);
@@ -127,6 +128,7 @@
                         <!-- Start Single Product -->
                         @foreach ($products as $product)
                             @php
+                                $image = '';
                                 // Pegamos somente a primeira imagem a ser a principal
                                 $image = Storage::get($product->productImage[0]->image_name);
                                 $mime_type = Storage::mimeType($product->productImage[0]->image_name);
