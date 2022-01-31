@@ -31,7 +31,7 @@ class ProductController extends Controller
             'main_category'     => 'required|string',
         ]);
 
-        $originalPath = storage_path('/app/product_image/');
+        $originalPath = storage_path('/app/public/product_image/');
         if (!file_exists($originalPath)) {
             mkdir($originalPath, 0777, true);
         }
@@ -77,73 +77,43 @@ class ProductController extends Controller
 
 
 
-            $width_max = 420;
-            $height_max = 480;
-            $img_name = 'nopic.png';
-            if ($request->hasFile('img_principal')) {
+            $imageName = time() . '.' . $request->img_principal->extension();
 
-                list($width_orig, $height_orig) = getimagesize($request->img_principal);
-                $ratio_orig = $width_orig / $height_orig;
-                if ($width_max / $height_max > $ratio_orig) {
-                    $width_max = $height_max * $ratio_orig; //----
-                } else {
-                    $height_max = $width_max / $ratio_orig; //----
-                }
-                $img_principal = Image::make($request->img_principal)->resize($width_max, $height_max);
-                $img_name = Str::random() . '.' . $request->img_principal->extension();
-                $img_principal->save($originalPath . $img_name);
-            }
-            $create_img_principal['product_id'] = $products->id;
-            $create_img_principal['sequence']   = 1;
-            $create_img_principal['image_name'] = 'product_image/' . $img_name;
-            ProductImage::create($create_img_principal);
+            $request->img_principal->move(storage_path('/app/public/product_image/'), $imageName);
+            ProductImage::create([
+                'product_id' => $products->id,
+                'image_name' => 'product_image/' . $imageName,
+                'sequence' => 1,
+            ]);
 
             // Imagens multiplos
-            if ($request->img_multipla) {
-                foreach ($request->img_multipla as $for_img_multipla) {
-                    $width_max = 420;
-                    $height_max = 480;
+            // if ($request->img_multipla) {
+            //     foreach ($request->img_multipla as $for_img_multipla) {
+            //         $width_max = 420;
+            //         $height_max = 480;
 
-                    list($width_orig, $height_orig) = getimagesize($for_img_multipla);
-                    $ratio_orig = $width_orig / $height_orig;
-                    if ($width_max / $height_max > $ratio_orig) {
-                        $width_max = $height_max * $ratio_orig; //----
-                    } else {
-                        $height_max = $width_max / $ratio_orig; //----
-                    }
-                    $img_multipla = Image::make($for_img_multipla)->resize($width_max, $height_max);
-                    $img_name_m = Str::random() . '.' . $for_img_multipla->extension();
-                    $img_multipla->save($originalPath . $img_name_m);
+            //         list($width_orig, $height_orig) = getimagesize($for_img_multipla);
+            //         $ratio_orig = $width_orig / $height_orig;
+            //         if ($width_max / $height_max > $ratio_orig) {
+            //             $width_max = $height_max * $ratio_orig; //----
+            //         } else {
+            //             $height_max = $width_max / $ratio_orig; //----
+            //         }
+            //         $img_multipla = Image::make($for_img_multipla)->resize($width_max, $height_max);
+            //         $img_name_m = Str::random() . '.' . $for_img_multipla->extension();
+            //         $img_multipla->save($originalPath . $img_name_m);
 
-                    $count_sequence = ProductImage::where('product_id', $products->id)->orderByDesc('sequence')->first();
+            //         $count_sequence = ProductImage::where('product_id', $products->id)->orderByDesc('sequence')->first();
 
-                    $create_img_multipla['product_id'] = $products->id;
-                    $create_img_multipla['sequence']   = ($count_sequence->sequence + 1);
-                    $create_img_multipla['image_name'] = 'product_image/' . $img_name_m;
-                    ProductImage::create($create_img_multipla);
-                }
-            }
+            //         $create_img_multipla['product_id'] = $products->id;
+            //         $create_img_multipla['sequence']   = ($count_sequence->sequence + 1);
+            //         $create_img_multipla['image_name'] = 'product_image/' . $img_name_m;
+            //         ProductImage::create($create_img_multipla);
+            //     }
+            // }
         }
 
-        $product_image  = ProductImage::where('product_id', $products->id)->where('sequence', '1')->first();
-        $image          = Storage::get($product_image->image_name);
-        $mime_type      = Storage::mimeType($product_image->image_name);
-        $image          = 'data:' . $mime_type . ';base64,' . base64_encode($image);
-        return response()->json([
-            'table' => '<tr class="tr-id-' . $products->id . '">
-                    <td>' . $products->id . '</td>
-                    <td><img width="100px" src="' . $image . '"></td>
-                    <td>' . $products->name . '</td>
-                    <td>' . $this->sales_unit_array[$products->sales_unit] . '</td>
-                    <td>R$ ' . number_format($products->value, 2, '', ',') . '</td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="">
-                            <a href="#" class="btn btn-info btn-xs"><i class="fas fa-edit"></i> Alterar</a>
-                            <a href="#" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i> Apagar</a>
-                        </div>
-                    </td>
-                </tr>'
-        ]);
+        return response()->json('oi');
     }
 
     public function atualizarProduto(Request $request)
@@ -158,7 +128,7 @@ class ProductController extends Controller
             'main_category'     => 'required|string',
         ]);
 
-        $originalPath = storage_path('/app/product_image/');
+        $originalPath = storage_path('/app/public/product_image/');
         if (!file_exists($originalPath)) {
             mkdir($originalPath, 0777, true);
         }

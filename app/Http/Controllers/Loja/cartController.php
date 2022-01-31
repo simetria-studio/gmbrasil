@@ -2,84 +2,42 @@
 
 namespace App\Http\Controllers\Loja;
 
-use App\Http\Controllers\Controller;
+use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Product;
 
-class cartController extends Controller
+class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function cartAdd($id)
     {
-        return view('loja.cart-checkout');
+
+        $product = Product::find($id);
+
+        \Cart::add(array(
+            'id' => $id,
+            'name' => $product->name,
+            'price' => $product->value,
+            'quantity' => 1,
+            'attributes' => array(
+                'sales_unit'    => $product->sales_unit,
+                'image' => $product->productImage[0]->image_name,
+            ),
+
+        ));
+        return response()->json(\Cart::getContent());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function cartClear()
     {
-        //
+        \Cart::clear();
+
+        return redirect()->back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function cartRemove($id)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        \Cart::remove($id);
+        return response()->json(\Cart::getContent());
     }
 }

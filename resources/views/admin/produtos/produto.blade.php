@@ -68,7 +68,7 @@
                                                 @php
                                                     // Pegando a iamgem e tarnsformamndo em data
                                                     if (Storage::exists($image->image_name)) {
-                                                        $images = Storage::get($image->image_name);
+                                                        $image = asset('storage/product_image/' . $product->image_name);
                                                         $mime_types = Storage::mimeType($image->image_name);
                                                         $images = 'data:' . $mime_types . ';base64,' . base64_encode($images);
 
@@ -96,7 +96,7 @@
                                             @endphp
                                             <tr class="tr-id-{{ $product->id }}">
                                                 <td>{{ $product->id }}</td>
-                                                <td><img width="100px" src="{{ $image }}"></td>
+                                                <td><img width="100px" src="{{ asset('storage/' . $product->productImage[0]->image_name)}}"></td>
                                                 <td>{{ $product->name }}</td>
                                                 <td>{{ $sales_unit_array[$product->sales_unit] }}</td>
                                                 <td>R$ {{ number_format($product->value, 2, ',', '.') }}</td>

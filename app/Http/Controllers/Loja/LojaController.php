@@ -20,11 +20,14 @@ class LojaController extends Controller
         return view('loja.index', get_defined_vars());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
+    public function productDetail($slug)
+    {
+        $products = Product::where('status', '1')->with(['productImage', 'productCategory'])->find($slug);
+        return view('loja.product-detail', get_defined_vars());
+    }
+
     public function create()
     {
         //

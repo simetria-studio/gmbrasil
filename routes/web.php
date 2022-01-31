@@ -55,7 +55,11 @@ Route::middleware(['auth:web'])->group(function () {
 
 
     Route::get('shop', [LojaController::class, 'index'])->name('loja');
+    Route::get('cartAdd/{id}', [cartController::class, 'cartAdd'])->name('cart.add');
+    Route::get('cartClear', [cartController::class, 'cartClear'])->name('cart.clear');
+    Route::get('cartRemove/{id}', [cartController::class, 'cartRemove'])->name('cart.remove');
 
+    Route::get('product-detail/{slug}', [LojaController::class, 'productDetail'])->name('product.detail');
 });
 
 Route::get('admin/login', [AdminController::class, 'index'])->name('admin.login');

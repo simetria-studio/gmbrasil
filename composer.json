@@ -8,6 +8,7 @@
         "php": "^7.3|^8.0",
         "andreiio/blade-remix-icon": "^1.0",
         "blade-ui-kit/blade-ui-kit": "^0.3.3",
+        "darryldecode/cart": "^4.2",
         "flyingluscas/correios-php": "^2.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",

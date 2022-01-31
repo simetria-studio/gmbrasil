@@ -64,29 +64,23 @@
                                 <div class="tab-single">
                                     <div class="row">
                                         @foreach ($products as $product)
-                                            @php
-                                                $image = '';
-                                                // Pegamos somente a primeira imagem a ser a principal
-                                                $image = Storage::get($product->productImage[0]->image_name);
-                                                $mime_type = Storage::mimeType($product->productImage[0]->image_name);
-                                                $image = 'data:' . $mime_type . ';base64,' . base64_encode($image);
-                                            @endphp
+
                                             <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="product-details.html">
-                                                            <img class="default-img" src="{{ $image }}" alt="#">
-                                                            <img class="hover-img" src="{{ $image }}" alt="#">
+                                                        <a href="{{ route('product.detail', $product->slug) }}">
+                                                            <img class="default-img" src="{{ asset('storage/' . $product->productImage[0]->image_name)}}" alt="#">
+                                                            <img class="hover-img" src="{{ asset('storage/' . $product->productImage[0]->image_name)}}" alt="#">
                                                         </a>
                                                         <div class="button-head">
 
                                                             <div class="product-action-2">
-                                                                <a title="Add to cart" href="#">Adicionar ao Carrinho</a>
+                                                                <button title="Add to cart" class="btnAdd" data-id="{{ $product->id }}" href="#">Adicionar ao Carrinho</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="product-content">
-                                                        <h3><a href="product-details.html">{{ $product->name }}</a></h3>
+                                                        <h3><a href="{{ route('product.detail', $product->slug) }}">{{ $product->name }} </a></h3>
                                                         <div class="product-price">
                                                             <span>R$
                                                                 {{ number_format($product->value, 2, ',', '.') }}</span>
@@ -127,19 +121,12 @@
                     <div class="owl-carousel popular-slider">
                         <!-- Start Single Product -->
                         @foreach ($products as $product)
-                            @php
-                                $image = '';
-                                // Pegamos somente a primeira imagem a ser a principal
-                                $image = Storage::get($product->productImage[0]->image_name);
-                                $mime_type = Storage::mimeType($product->productImage[0]->image_name);
-                                $image = 'data:' . $mime_type . ';base64,' . base64_encode($image);
-                            @endphp
 
                             <div class="single-product">
                                 <div class="product-img">
-                                    <a href="product-details.html">
-                                        <img class="default-img" src="{{ $image }}" alt="#">
-                                        <img class="hover-img" src="{{ $image }}" alt="#">
+                                    <a href="{{ route('product.detail', $product->id) }}">
+                                        <img class="default-img" src="{{ asset('storage/' . $product->productImage[0]->image_name)}}" alt="#">
+                                        <img class="hover-img" src="{{ asset('storage/' . $product->productImage[0]->image_name)}}" alt="#">
                                         <span class="out-of-stock">Hot</span>
                                     </a>
                                     <div class="button-head">
@@ -150,7 +137,7 @@
                                     </div>
                                 </div>
                                 <div class="product-content">
-                                    <h3><a href="product-details.html">{{ $product->name }}</a></h3>
+                                    <h3><a href="{{ route('product.detail', $product->id) }}">{{ $product->name }}</a></h3>
                                     <div class="product-price">
                                         <span>R$
                                             {{ number_format($product->value, 2, ',', '.') }}</span>
