@@ -75,5 +75,6 @@ $(document).on("click", "#img-hover", function () {
 
 $(document).on("click", ".hamburguer", function () {
     $(".hover-menu").toggle();
+    $(".hover-menu").addClass('puff-in-center');
 });
 
