@@ -34,13 +34,15 @@
                 <div class="header">
                     <div class="menu-circle"></div>
                     <div class="header-menu">
-                        <a class="menu-link is-active" href="#">Home</a>
+                        <a class="menu-link is-active" href="{{ route('home') }}">Home</a>
                         <a class="menu-link notify" href="#">Carteira</a>
                         <a class="menu-link" href="{{ route('loja') }}">Loja</a>
                         <a class="menu-link notify" href="#">Suporte</a>
                     </div>
                     <div class="search-bar">
-                        <input type="text" placeholder="Buscar...">
+                        <div class="hamburguer">
+                            <i class="fas fa-bars"></i>
+                        </div>
                     </div>
                     <div class="header-profile">
                         <div class="notification">
@@ -64,6 +66,32 @@
                             </nav>
                         </div>
                     </div>
+                </div>
+                <div class="hover-menu">
+                    <ul class="nav flex-column menu-display">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ route('home') }}"><i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ route('loja') }}"><i class="fas fa-store-alt"></i> Loja</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#"><i class="far fa-list-alt"></i> Pedidos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#"><i class="fas fa-box-open"></i> Meus Produtos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#"><i class="fas fa-users"></i> Afiliados</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#"><i class="fas fa-wallet"></i> Carteira</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#"><i class="fas fa-phone-alt"></i> Suporte</a>
+                        </li>
+                    </ul>
+
                 </div>
 
             </header>

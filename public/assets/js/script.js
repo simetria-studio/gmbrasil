@@ -72,3 +72,8 @@ $(document).ready(function () {
 $(document).on("click", "#img-hover", function () {
     $("#drop-menu").toggleClass("d-none");
 });
+
+$(document).on("click", ".hamburguer", function () {
+    $(".hover-menu").toggle();
+});
+

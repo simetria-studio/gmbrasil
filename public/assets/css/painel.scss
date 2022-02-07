@@ -115,25 +115,21 @@ body.light-mode .video-bg:before {
     top: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.72) 0%,
-        #000 100%
-    );
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, #000 100%);
     backdrop-filter: saturate(3);
 }
 .modal-backdrop.show {
-    opacity: .5;
+    opacity: 0.5;
     display: none !important;
 }
 
-.icons{
-    a{
+.icons {
+    a {
         font-size: 3em;
         margin: 0 8px;
     }
-    .whatsapp{
-        a{
+    .whatsapp {
+        a {
             color: #34af23;
         }
     }
@@ -422,14 +418,7 @@ body.light-mode .video-bg:before {
     width: 100%;
     justify-content: space-between;
     background-image: url("https://www.transparenttextures.com/patterns/cubes.png"),
-        linear-gradient(
-            to right top,
-            #00628b,
-            #08749d,
-            #1085b0,
-            #1897c2,
-            #20a8d4
-        );
+        linear-gradient(to right top, #00628b, #08749d, #1085b0, #1897c2, #20a8d4);
     border-radius: 14px;
     padding: 20px 40px;
 }
@@ -618,8 +607,7 @@ body.light-mode .video-bg:before {
     height: 5px;
     background-color: var(--button-inactive);
     border-radius: 50%;
-    box-shadow: 7px 0 0 0 var(--button-inactive),
-        14px 0 0 0 var(--button-inactive);
+    box-shadow: 7px 0 0 0 var(--button-inactive), 14px 0 0 0 var(--button-inactive);
     margin: 0 12px;
 }
 @media screen and (max-width: 415px) {
@@ -852,10 +840,7 @@ body.light-mode .video-bg:before {
     border-radius: 10px;
 }
 
-
-
-
-.drop-menu{
+.drop-menu {
     width: 250px;
     background: #f7f7f7;
     z-index: 1200;
@@ -863,5 +848,30 @@ body.light-mode .video-bg:before {
     top: 59px;
     right: 0;
     text-align: center;
+}
+.hamburguer {
+    align-self: center;
+    color: #fff;
+    i {
+        font-size: 1.5em;
+    }
+}
 
+.hover-menu {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    background-color: #ffff;
+}
+.menu-display {
+    margin: 20px 10px;
+    a {
+        font-size: 1.5em;
+    }
+}
+@media only screen and (min-width: 900px) {
+    .hamburguer {
+        display: none;
+    }
 }
