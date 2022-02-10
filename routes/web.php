@@ -13,6 +13,7 @@ use App\Http\Controllers\Alunos\AlunosController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\painel\LucrosController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Cartao\CartaoController;
 use App\Http\Controllers\Loja\cartController;
 use App\Http\Controllers\painel\EstoqueController;
 use App\Http\Controllers\painel\PedidosController;
@@ -43,6 +44,10 @@ Route::post('login-user', [UserController::class, 'login'])->name('login.user');
 Route::get('alunos/cadastro', [AlunosController::class, 'index'])->name('alunos.index');
 Route::get('alunos/thanks', [AlunosController::class, 'thanks'])->name('alunos.thanks');
 Route::post('alunos/cadastro/store', [AlunosController::class, 'store'])->name('alunos.store');
+
+
+Route::get('cartao/cadastro', [CartaoController::class, 'index'])->name('cartao.index');
+Route::post('cartao/cadastro/store', [CartaoController::class, 'store'])->name('cartao.store');
 
 Route::middleware(['auth:web'])->group(function () {
 
