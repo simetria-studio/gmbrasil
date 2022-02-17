@@ -24,7 +24,8 @@ class LojaController extends Controller
 
     public function productDetail($slug)
     {
-        $products = Product::where('status', '1')->with(['productImage', 'productCategory'])->find($slug);
+        $product = Product::where('status', '1')->with(['productImage', 'productCategory'])->find($slug);
+        // dd($product);
         return view('loja.product-detail', get_defined_vars());
     }
 

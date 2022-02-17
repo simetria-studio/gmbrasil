@@ -1,0 +1,24 @@
+
+$main-color: #1664ac;
+
+.main-head
+{
+    background-color: $main-color;
+}
+.logo{
+    width: 150px;
+    img{
+        width: 100%;
+    }
+}
+.btn-search{
+    background-color: #fff;
+    border: none;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+.search{
+    input{
+        border-right: none;
+    }
+}

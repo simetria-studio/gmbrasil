@@ -47,7 +47,7 @@ class AlunosController extends Controller
         $mails['responsavel_franquia'] = $request->responsavel_franquia;
         $mails['observacao'] = $request->observacao;
 
-        Mail::to('gmbrasiloportunidades@gmail.com')->send(new Captacao($mails));
+        Mail::to('suportegmbrasilvd@gmail.com')->send(new Captacao($mails));
 
         return redirect()->route('alunos.thanks');
     }

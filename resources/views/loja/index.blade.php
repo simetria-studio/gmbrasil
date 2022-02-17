@@ -68,7 +68,7 @@
                                             <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="{{ route('product.detail', $product->slug) }}">
+                                                        <a href="{{ route('product.detail', $product->id) }}">
                                                             <img class="default-img" src="{{ asset('storage/' . $product->productImage[0]->image_name)}}" alt="#">
                                                             <img class="hover-img" src="{{ asset('storage/' . $product->productImage[0]->image_name)}}" alt="#">
                                                         </a>
@@ -80,7 +80,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="product-content">
-                                                        <h3><a href="{{ route('product.detail', $product->slug) }}">{{ $product->name }} </a></h3>
+                                                        <h3><a href="{{ route('product.detail', $product->id) }}">{{ $product->name }} </a></h3>
                                                         <div class="product-price">
                                                             <span>R$
                                                                 {{ number_format($product->value, 2, ',', '.') }}</span>
@@ -129,7 +129,7 @@
                                         <img class="hover-img" src="{{ asset('storage/' . $product->productImage[0]->image_name)}}" alt="#">
                                         <span class="out-of-stock">Hot</span>
                                     </a>
-                                    <div class="button-head">
+                                    <div class="button-head">->with(['productImage', 'productCategory'])
 
                                         <div class="product-action-2">
                                             <a title="Add to cart" href="#">Adicionar ao Carrinho</a>
