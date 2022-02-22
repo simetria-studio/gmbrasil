@@ -70,7 +70,8 @@
                 <div class="hover-menu">
                     <ul class="nav flex-column menu-display">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('home') }}"><i class="fas fa-home"></i> Home</a>
+                            <a class="nav-link active" href="{{ route('home') }}"><i class="fas fa-home"></i>
+                                Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#"><i class="fas fa-store-alt"></i> Loja</a>
@@ -149,7 +150,22 @@
                 });
             })
         </script>
+        @if (Session::has('success'))
+            <script type="text/javascript">
+                Swal.fire({
+                    title: 'Sucesso!',
+                    icon: 'success',
+                    text: "{{ Session::get('success') }}",
+                    timer: 5000,
+                    type: 'success'
+                }).then((result) => {
+                    // Reload the Page
+                    location.reload();
+                });
+            </script>
+        @endif
         @yield('script')
+
     </body>
 
     </html>

@@ -1,4 +1,9 @@
 $(document).ready(function(){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $('#form-login').find('input').on('keyup', function(e){
         if(e.keyCode == 13){
             $('#btn-login').trigger('click');

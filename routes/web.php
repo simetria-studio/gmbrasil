@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BrocheToUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CepController;
 use App\Http\Controllers\UserController;
@@ -68,7 +69,7 @@ Route::middleware(['auth:web'])->group(function () {
 });
 
 Route::get('admin/login', [AdminController::class, 'index'])->name('admin.login');
-Route::post('admin/login/login', [AdminController::class, 'login'])->name('admin.login.entrar');
+Route::post('admin/login/entrar', [AdminController::class, 'login'])->name('admin.login.entrar');
 Route::get('admin/register', [AdminController::class, 'register'])->name('admin.login.register');
 Route::post('admin/login/store', [AdminController::class, 'store'])->name('admin.login.store');
 
@@ -90,6 +91,8 @@ Route::middleware(['auth:admin'])->prefix('/cadastro')->group(function () {
     Route::post('/novo_produto', [ProductController::class, 'novoProduto'])->name('novoProduto');
     Route::post('/atualizar_produto', [ProductController::class, 'atualizarProduto'])->name('atualizarProduto');
     Route::post('/inativar_produto', [ProductController::class, 'inativarProduto']);
+
+    Route::post('add/broche', [BrocheToUserController::class, 'store'])->name('add.broche');
 });
 
 

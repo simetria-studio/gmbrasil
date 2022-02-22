@@ -296,10 +296,10 @@ $(document).ready(function(){
         });
     }
 
-    $('form').on('submit', function(e){
-        e.preventDefault();
-        $(this).find('.btn-salvar').trigger('click');
-    });
+    // $('form').on('submit', function(e){
+    //     e.preventDefault();
+    //     $(this).find('.btn-salvar').trigger('click');
+    // });
 
     // Condifgurações
     var Toast = Swal.mixin({

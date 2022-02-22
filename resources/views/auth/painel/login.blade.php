@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="d-inline-block w-100">
 
-                                    <button id="btn-login" type="submit" class="btn btn-primary float-right">Entrar</button>
+                                    <button id="btn-login" type="button" class="btn btn-primary float-right">Entrar</button>
                                 </div>
 
                             </form>

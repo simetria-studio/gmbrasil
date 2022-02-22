@@ -55,4 +55,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(User::class,'uniqid', 'codigo');
     }
+    public function broches()
+    {
+        return $this->hasMany(BrocheToUser::class, 'user_id',);
+    }
 }

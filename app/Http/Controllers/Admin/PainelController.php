@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Broche;
 use App\Models\Codigo;
 use App\Models\Product;
 use App\Models\Category;
@@ -26,7 +27,8 @@ class PainelController extends Controller
 
     public function users()
     {
-        $users = User::with('filiados')->paginate();
+        $users = User::with(['filiados', 'broches.broxes'])->paginate();
+        $broches = Broche::all();
         // dd($users);
         return view('admin.usuarios', get_defined_vars());
     }
