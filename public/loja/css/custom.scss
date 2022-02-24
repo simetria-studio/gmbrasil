@@ -1,4 +1,8 @@
 $main-color: #1664ac;
+$secundary-color: #DE5107;
+$third-color: #252445;
+$text-color: #444444;
+
 
 body {
     font-family: "Lato", sans-serif;
@@ -52,10 +56,16 @@ body {
         font-size: 1.5em;
     }
     .cart-close:hover {
-        color: red;
+        color: $secundary-color;
     }
 }
-
+.nav-item{
+    text-transform: uppercase;
+    font-weight: 600;
+    a{
+        color: $third-color;
+    }
+}
 //cart
 
 div.mini-shopping-cart {
@@ -117,7 +127,7 @@ div.mini-shopping-cart .mini-cart-item div:first-child + div + div .fa-trash-o {
     margin: 18px -2px 0 0;
     float: right;
     padding: 2px;
-    color: #f16d62;
+    color: $secundary-color;
 }
 div.mini-shopping-cart .mini-cart-item div:first-child + div + div .fa-trash-o:hover {
     cursor: pointer;
@@ -164,7 +174,7 @@ div.mini-shopping-cart .mini-shopping-cart-buttons {
     font-family: Open Sans;
     font-weight: 600;
     font-size: 13px;
-    color: #f16d62;
+    color: $secundary-color;
     border: none;
     border-radius: 2px;
     display: inline-block;
@@ -179,7 +189,7 @@ div.mini-shopping-cart .mini-shopping-cart-buttons {
 .btn-flat {
     box-shadow: none;
     background-color: transparent;
-    color: #f16d62;
+    color: $secundary-color;
     cursor: pointer;
 }
 .waves-effect {
@@ -202,7 +212,7 @@ div.mini-shopping-cart .mini-shopping-cart-buttons {
     will-change: opacity, transform;
 }
 .waves-effect.waves-orange .waves-ripple {
-    background-color: rgba(255, 152, 0, 0.7);
+    background-color: $secundary-color;
 }
 
 .navbar .dropdown-toggle,
@@ -237,7 +247,7 @@ div.mini-shopping-cart .mini-shopping-cart-buttons {
     }
 }
 .menu {
-    background-color: #16181b;
+    background: #040404;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -261,10 +271,10 @@ div.mini-shopping-cart .mini-shopping-cart-buttons {
     width: 250px;
 }
 .product-item:hover {
-    border-bottom: 2px solid #fc5a5a;
+    border-bottom: 2px solid $secundary-color;
 }
 .product-item:hover .btn-cart {
-    background: #fc5a5a;
+    background: $secundary-color;
 }
 .product-item img {
     display: block;
@@ -280,16 +290,16 @@ div.mini-shopping-cart .mini-shopping-cart-buttons {
 .product-list h3 {
     // font-family: "Open Sans";
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 600;
     color: #444444;
     margin: 0 0 10px 0;
 }
 .price {
     // font-family: "Open Sans";
-    font-size: 16px;
-    color: #fc5a5a;
+    font-size: 1.2em;
+    color: $third-color;
     display: block;
-    font-weight: 600;
+    font-weight: 900;
     margin-bottom: 12px;
 }
 .btn-cart {
@@ -324,3 +334,13 @@ div.mini-shopping-cart .mini-shopping-cart-buttons {
     }
 }
 /*******************************/
+
+
+//footer
+
+footer{
+
+    background: #040404;
+    height: 200px;
+    width: 100%;
+}
