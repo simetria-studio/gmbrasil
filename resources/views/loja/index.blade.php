@@ -43,7 +43,7 @@
                         </div>
                         <div>
                             <h1 class="text-center my-4 text-uppercase">Mais Vendidos</h1>
-                            <div class="container flexbox">
+                            <div class="container  responsive">
                                 @foreach ($products as $product)
                                     <div class="product-item"><img
                                             src="{{ asset('storage/' . $product->productImage[0]->image_name) }}">
