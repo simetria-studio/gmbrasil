@@ -9,19 +9,21 @@ use App\Models\Product;
 
 class CartController extends Controller
 {
-    public function cartAdd($id)
+    public function cartAdd(Request $request)
     {
 
-        $product = Product::find($id);
+        $cart = $request->all();
+
+        // dd();
 
         \Cart::add(array(
-            'id' => $id,
-            'name' => $product->name,
-            'price' => $product->value,
+            'id' => $cart['id'],
+            'name' => $cart['name'],
+            'price' => $cart['value'],
             'quantity' => 1,
             'attributes' => array(
-                'sales_unit'    => $product->sales_unit,
-                'image' => $product->productImage[0]->image_name,
+                'sales_unit'    => $cart['sales_unit'],
+                'image' => $cart['product_image'][0]['image_name'],
             ),
 
         ));

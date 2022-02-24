@@ -49,10 +49,11 @@
                                             src="{{ asset('storage/' . $product->productImage[0]->image_name) }}">
                                         <div class="product-list">
                                             <h3>{{ $product->name }}</h3><span class="price">R$
-                                                {{ number_format($product->value, 2, ',', '.') }}</span><a href=""
-                                                class="button">ADICIONAR</a>
+                                                {{ number_format($product->value, 2, ',', '.') }}</span><button data-id="{{ $product->id }}" data-cart="{{ json_encode($product) }}"
+                                                class="btn btn-dark btn-cart btn-{{ $product->id }}">ADICIONAR</button>
                                         </div>
                                     </div>
+
                                 @endforeach
                             </div>
 

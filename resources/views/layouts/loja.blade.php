@@ -4,7 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
     <script src="https://kit.fontawesome.com/0ab2bcde1c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('loja/css/custom.min.css') }}">
@@ -18,7 +24,8 @@
                 <div class="row align-items-center">
                     <div class="col-md-4">
                         <div class="logo">
-                            <a href="{{ route('loja') }}"> <img src="{{ asset('assets/img/logo-dourada-nova.png') }}" alt=""></a>
+                            <a href="{{ route('loja') }}"> <img
+                                    src="{{ asset('assets/img/logo-dourada-nova.png') }}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -56,46 +63,34 @@
             </div>
             <div class="cart-body">
                 <div class="mini-shopping-cart">
-                    <div class="mini-cart-item">
-                        <div>
-                            <img
-                                src="http://www.coolmix.nl/media/catalog/product/cache/1/thumbnail/75x/9df78eab33525d08d6e5fb8d27136e95/s/a/samsung_galaxy_s6_0003s_0002_att_black_600x600_xlarge_2_2.jpg">
+                    @foreach (\Cart::getContent() as $item)
+                        <div class="mini-cart-item" id="cart-itens-{{ $item->id }}">
+                            <div>
+                                <img src="{{ asset('storage/' . $item->attributes->image) }}">
+                            </div>
+                            <div>
+                                <span>{{ $item->name }}<br></span>
+                                <span>Código: 103530<br>Quantidade: {{ $item->quantity }}</span>
+                            </div>
+                            <div>
+                                <span>R$
+                                    {{ number_format($item->price, 2, ',', '.') }}<br></span>
+                                <i class="fa fa-trash-o remove-{{ $item->id }}" id="removeItem"  data-remove="{{ $item->id }}" ></i>
+                            </div>
                         </div>
-                        <div>
-                            <span>Samsung Galaxy S6 Edge Refurbished 32 GB Black<br></span>
-                            <span>Artikelnummer: 103530<br>Aantal: 1</span>
-                        </div>
-                        <div>
-                            <span>€ 595,00<br></span>
-                            <i class="fa fa-trash-o"></i>
-                        </div>
-                    </div>
-                    <div class="mini-cart-item">
-                        <div>
-                            <img
-                                src="http://www.coolmix.nl/media/catalog/product/cache/1/thumbnail/75x/9df78eab33525d08d6e5fb8d27136e95/2/0/20460-1.jpg">
-                        </div>
-                        <div>
-                            <span>MountR Case Galaxy S5 Black<br></span>
-                            <span>Artikelnummer: 103530<br>Aantal: 1</span>
-                        </div>
-                        <div>
-                            <span>€ 34,95<br></span>
-                            <i class="fa fa-trash-o" alt="Remove item"></i>
-                        </div>
-                    </div>
-                    <div class="mini-cart-subtotal">
-                        <div>
-                            <span>Subtotaal:</span>
-                        </div>
-                        <div>
-                            <span>€ 629,95</span>
-                        </div>
-                    </div>
-                    <div class="mini-shopping-cart-buttons text-center">
-                        <button class="waves-effect waves-orange btn btn-dark">FINALIZAR COMPRA</button>
-                    </div>
+                    @endforeach
 
+                </div>
+                <div class="mini-cart-subtotal text-center my-4">
+                    <div>
+                        <span>Sub Total:</span>
+                    </div>
+                    <div>
+                        <span class="price-span"></span>
+                    </div>
+                </div>
+                <div class="mini-shopping-cart-buttons text-center">
+                    <button class="waves-effect waves-orange btn btn-dark">FINALIZAR COMPRA</button>
                 </div>
             </div>
         </div>
@@ -156,6 +151,13 @@
 
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+        <script>
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('loja/js/script.js') }}"></script>
     </body>
