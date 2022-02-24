@@ -131,7 +131,8 @@ $(document).ready(function () {
 
 $('.responsive').slick({
     dots: true,
-    infinite: false,
+    infinite: true,
+    arrows: true,
     speed: 300,
     slidesToShow: 4,
     slidesToScroll: 4,
