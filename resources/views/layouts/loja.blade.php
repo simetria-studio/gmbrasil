@@ -64,7 +64,7 @@
             </div>
             <div class="cart-body">
                 <div class="mini-shopping-cart">
-                    @foreach (\Cart::getContent() as $item)
+                    {{-- @foreach (\Cart::getContent() as $item)
                         <div class="mini-cart-item" id="cart-itens-{{ $item->id }}">
                             <div>
                                 <img src="{{ asset('storage/' . $item->attributes->image) }}">
@@ -79,7 +79,7 @@
                                 <i class="fa fa-trash-o remove-{{ $item->id }}" id="removeItem"  data-remove="{{ $item->id }}" ></i>
                             </div>
                         </div>
-                    @endforeach
+                    @endforeach --}}
 
                 </div>
                 <div class="mini-cart-subtotal text-center my-4">
@@ -90,7 +90,7 @@
                         <span class="price-span"></span>
                     </div>
                 </div>
-                <div class="mini-shopping-cart-buttons text-center">
+                <div class="mini-shopping-cart-buttons text-center mb-5">
                     <button class="waves-effect waves-orange btn btn-dark">FINALIZAR COMPRA</button>
                 </div>
             </div>
@@ -149,7 +149,7 @@
             @yield('content')
         </main>
         <footer>
-            
+
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
         <script>

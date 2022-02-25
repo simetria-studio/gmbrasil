@@ -14,7 +14,7 @@ class CartController extends Controller
 
         $cart = $request->all();
 
-        // dd();
+        // dd($cart);
 
         \Cart::add(array(
             'id' => $cart['id'],
@@ -24,6 +24,7 @@ class CartController extends Controller
             'attributes' => array(
                 'sales_unit'    => $cart['sales_unit'],
                 'image' => $cart['product_image'][0]['image_name'],
+                'code' => $cart['code']
             ),
 
         ));
@@ -41,5 +42,12 @@ class CartController extends Controller
     {
         \Cart::remove($id);
         return response()->json(\Cart::getContent());
+    }
+
+    public function cartGet()
+    {
+        $cartItens = \Cart::getContent();
+
+        return response()->json($cartItens);
     }
 }

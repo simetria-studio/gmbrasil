@@ -44,6 +44,7 @@ body {
     width: 0;
     height: 100vh;
     position: fixed;
+    overflow-y: scroll;
     top: 0;
     right: 0;
     z-index: 100;
@@ -109,9 +110,11 @@ div.mini-shopping-cart .mini-cart-item div:first-child + div span {
     display: block;
 }
 div.mini-shopping-cart .mini-cart-item div:first-child + div span:nth-child(2) {
-    color: #aaa;
+    color: $text-color;
     font-weight: 100;
     display: inline;
+    font-size: 0.7em;
+    font-weight: 500;
 }
 div.mini-shopping-cart .mini-cart-item div:first-child + div + div {
     font-weight: 700;

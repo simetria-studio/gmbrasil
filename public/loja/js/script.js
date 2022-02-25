@@ -64,7 +64,7 @@ $(document).ready(function () {
                 });
                 $('.mini-shopping-cart').empty();
                 $.each(data, (key, value) => {
-                    total += value.price * value.quantity;
+                    total += (value.price * value.quantity);
                     $('.mini-shopping-cart').append(`<div id="cart-itens-${key}" class="mini-cart-item">
                 <div>
                     <img
@@ -72,7 +72,7 @@ $(document).ready(function () {
                 </div>
                 <div>
                     <span>${value.name}<br></span>
-                    <span>Código: 103530<br>Quantidade: ${value.quantity}</span>
+                    <span>Código: ${value.attributes.code}<br>Quantidade: ${value.quantity}</span>
                 </div>
                 <div>
                     <span>${value.price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}<br></span>
@@ -81,16 +81,17 @@ $(document).ready(function () {
             </div>`);
 
                     $(`#removeItem-${key}`).on('click', function () {
-                        total - value.price * value.quantity;
+                        total = parseFloat(total) - (parseFloat(value.price) * parseInt(value.quantity));
+                        console.log(total);
                         $.ajax({
                             url: `cartRemove/${key}`,
                             async: true,
                             success: function (data) {
                                 console.log('removido');
-
+                                $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
                             },
                             beforeSend: function () {
-
+                                $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
                                 $(`#cart-itens-${key}`).remove();
                             },
                         });
@@ -107,22 +108,57 @@ $(document).ready(function () {
 
 
     });
-    var removeBtn = $('#removeItem').data('remove');
-    $(`.remove-${removeBtn}`).on('click', function () {
-        console.log('clicado')
+
+        var total = 0;
         $.ajax({
-            url: `cartRemove/${removeBtn}`,
+            url: "cart/get",
             async: true,
             success: function (data) {
-                console.log('removido');
+                console.log(data)
+                $('.mini-shopping-cart').empty();
+                $.each(data, (key, value) => {
+                    total += (value.price * value.quantity);
+                    $('.mini-shopping-cart').append(`<div id="cart-itens-${key}" class="mini-cart-item">
+                <div>
+                    <img
+                        src="storage/${value.attributes.image} ">
+                </div>
+                <div>
+                    <span>${value.name}<br></span>
+                    <span>Código: ${value.attributes.code}<br>Quantidade: ${value.quantity}</span>
+                </div>
+                <div>
+                    <span>${value.price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}<br></span>
+                   <i class="fa fa-trash-o" id="removeItem-${key}"></i>
+                </div>
+            </div>`);
+
+                    $(`#removeItem-${key}`).on('click', function () {
+                        total = parseFloat(total) - (parseFloat(value.price) * parseInt(value.quantity));
+                        console.log(total);
+                        $.ajax({
+                            url: `cartRemove/${key}`,
+                            async: true,
+                            success: function (data) {
+                                console.log('removido');
+                                $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
+                            },
+                            beforeSend: function () {
+                                $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
+                                $(`#cart-itens-${key}`).remove();
+                            },
+                        });
+                    });
+                });
             },
-            beforeSend: function () {
-                $(`#cart-itens-${removeBtn}`).remove();
+            beforeSend: function (data) {
+
             },
         }).done(function () {
-
+            $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
         });
-    });
+
+
 
 });
 
@@ -137,31 +173,31 @@ $('.responsive').slick({
     slidesToShow: 4,
     slidesToScroll: 4,
     responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
         }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-      // You can unslick at a given breakpoint now by adding:
-      // settings: "unslick"
-      // instead of a settings object
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
     ]
-  });
+});
