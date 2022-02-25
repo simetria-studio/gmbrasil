@@ -3,6 +3,8 @@ $secundary-color: #DE5107;
 $third-color: #252445;
 $text-color: #444444;
 
+@import 'cart';
+@import 'loader';
 
 body {
     font-family: "Lato", sans-serif;

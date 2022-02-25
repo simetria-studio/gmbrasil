@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.cart').on('click', function () {
+    $('.cart-btn').on('click', function () {
         $(".shopping-cart").animate({
             opacity: '1',
             width: '350px'
@@ -109,16 +109,16 @@ $(document).ready(function () {
 
     });
 
-        var total = 0;
-        $.ajax({
-            url: "cart/get",
-            async: true,
-            success: function (data) {
-                console.log(data)
-                $('.mini-shopping-cart').empty();
-                $.each(data, (key, value) => {
-                    total += (value.price * value.quantity);
-                    $('.mini-shopping-cart').append(`<div id="cart-itens-${key}" class="mini-cart-item">
+    var total = 0;
+    $.ajax({
+        url: "cart/get",
+        async: true,
+        success: function (data) {
+            console.log(data)
+            $('.mini-shopping-cart').empty();
+            $.each(data, (key, value) => {
+                total += (value.price * value.quantity);
+                $('.mini-shopping-cart').append(`<div id="cart-itens-${key}" class="mini-cart-item">
                 <div>
                     <img
                         src="storage/${value.attributes.image} ">
@@ -133,30 +133,102 @@ $(document).ready(function () {
                 </div>
             </div>`);
 
-                    $(`#removeItem-${key}`).on('click', function () {
-                        total = parseFloat(total) - (parseFloat(value.price) * parseInt(value.quantity));
-                        console.log(total);
-                        $.ajax({
-                            url: `cartRemove/${key}`,
-                            async: true,
-                            success: function (data) {
-                                console.log('removido');
-                                $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
-                            },
-                            beforeSend: function () {
-                                $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
-                                $(`#cart-itens-${key}`).remove();
-                            },
-                        });
+                $(`#removeItem-${key}`).on('click', function () {
+                    total = parseFloat(total) - (parseFloat(value.price) * parseInt(value.quantity));
+                    console.log(total);
+                    $.ajax({
+                        url: `cartRemove/${key}`,
+                        async: true,
+                        success: function (data) {
+                            console.log('removido');
+                            $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
+                        },
+                        beforeSend: function () {
+                            $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
+                            $(`#cart-itens-${key}`).remove();
+                        },
                     });
                 });
-            },
-            beforeSend: function (data) {
+            });
+        },
+        beforeSend: function (data) {
 
-            },
-        }).done(function () {
-            $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
-        });
+        },
+    }).done(function () {
+        $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
+    });
+
+
+
+    //cart 2
+    var total = 0;
+    $.ajax({
+        url: "cart/get",
+        async: true,
+        success: function (data) {
+            console.log(data)
+            $('.cartWrap').empty();
+            $.each(data, (key, value) => {
+                total += (value.price * value.quantity);
+                $('.cartWrap').append(`<li class="items odd">
+                <div class="infoWrap">
+                    <div class="cartSection">
+                        <img src="storage/${value.attributes.image} " alt=""
+                            class="itemImg" />
+                        <p class="itemNumber">Código: ${value.attributes.code}</p>
+                        <h3>${value.name}</h3>
+
+                        <p> <input type="text" class="qty" placeholder="${value.quantity}" /> ${value.price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</p>
+
+                    </div>
+
+
+                    <div class="prodTotal cartSection">
+                        <p>${(value.price * value.quantity).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} </p>
+                    </div>
+                    <div class="cartSection removeWrap">
+                        <a href="#" class="remove">x</a>
+                    </div>
+                </div>
+            </li>`);
+
+                $(`#removeItem-${key}`).on('click', function () {
+                    total = parseFloat(total) - (parseFloat(value.price) * parseInt(value.quantity));
+                    console.log(total);
+                    $.ajax({
+                        url: `cartRemove/${key}`,
+                        async: true,
+                        success: function (data) {
+                            console.log('removido');
+                            $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
+                        },
+                        beforeSend: function () {
+                            $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
+                            $(`#cart-itens-${key}`).remove();
+                        },
+                    });
+                });
+            });
+        },
+        beforeSend: function (data) {
+            $('.preloader_container').removeClass('d-none');
+        },
+    }).done(function () {
+        // $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
+        $('.preloader_container').addClass('d-none');
+    });
+
+    // Remove Items From Cart
+    $('a.remove').click(function () {
+        event.preventDefault();
+        $(this).parent().parent().parent().hide(400);
+
+    })
+
+    // Just for testing, show all items
+    $('a.btn.continue').click(function () {
+        $('li.items').show(400);
+    })
 
 
 

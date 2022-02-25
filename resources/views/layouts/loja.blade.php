@@ -12,13 +12,23 @@
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/0ab2bcde1c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('loja/css/custom.min.css') }}">
     <title>GM BRASIL VD - SHOP</title>
 </head>
 
 <body>
+    <div class="preloader_container d-none">
+        <div id="loader">
+          <div class="semi semi1 animated1"></div>
+          <div class="semi semi2 animated2"></div>
+          <div class="semi semi3 animated3"></div>
+          <div class="outerc">
+            <div class="innerc"></div>
+          </div>
+        </div>
+     </div>
     <header class="header">
         <div class="main-head">
             <div class="container">
@@ -49,7 +59,7 @@
                             <div class="divider">
 
                             </div>
-                            <div class="cart">
+                            <div class="cart-btn">
                                 <i class="fas fa-shopping-cart"></i>
                             </div>
 
@@ -64,22 +74,7 @@
             </div>
             <div class="cart-body">
                 <div class="mini-shopping-cart">
-                    {{-- @foreach (\Cart::getContent() as $item)
-                        <div class="mini-cart-item" id="cart-itens-{{ $item->id }}">
-                            <div>
-                                <img src="{{ asset('storage/' . $item->attributes->image) }}">
-                            </div>
-                            <div>
-                                <span>{{ $item->name }}<br></span>
-                                <span>Código: 103530<br>Quantidade: {{ $item->quantity }}</span>
-                            </div>
-                            <div>
-                                <span>R$
-                                    {{ number_format($item->price, 2, ',', '.') }}<br></span>
-                                <i class="fa fa-trash-o remove-{{ $item->id }}" id="removeItem"  data-remove="{{ $item->id }}" ></i>
-                            </div>
-                        </div>
-                    @endforeach --}}
+
 
                 </div>
                 <div class="mini-cart-subtotal text-center my-4">
@@ -91,7 +86,8 @@
                     </div>
                 </div>
                 <div class="mini-shopping-cart-buttons text-center mb-5">
-                    <button class="waves-effect waves-orange btn btn-dark">FINALIZAR COMPRA</button>
+                    <a href="{{ route('cart') }}"> <button class="waves-effect waves-orange btn btn-dark">FINALIZAR
+                            COMPRA</button></a>
                 </div>
             </div>
         </div>
@@ -105,7 +101,8 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ route('loja') }}">Home <span
+                                    class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="#">Produtos </a>
@@ -161,7 +158,7 @@
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
         <script src="{{ asset('loja/js/script.js') }}"></script>
     </body>
 

@@ -50,4 +50,9 @@ class CartController extends Controller
 
         return response()->json($cartItens);
     }
+
+    public function cart()
+    {
+        return view('loja.cart-checkout');
+    }
 }
