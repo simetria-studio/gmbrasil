@@ -21,14 +21,14 @@
 <body>
     <div class="preloader_container d-none">
         <div id="loader">
-          <div class="semi semi1 animated1"></div>
-          <div class="semi semi2 animated2"></div>
-          <div class="semi semi3 animated3"></div>
-          <div class="outerc">
-            <div class="innerc"></div>
-          </div>
+            <div class="semi semi1 animated1"></div>
+            <div class="semi semi2 animated2"></div>
+            <div class="semi semi3 animated3"></div>
+            <div class="outerc">
+                <div class="innerc"></div>
+            </div>
         </div>
-     </div>
+    </div>
     <header class="header">
         <div class="main-head">
             <div class="container">
@@ -157,9 +157,19 @@
             });
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript"
+                src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+        @yield('script')
+        <script src="{{ asset('loja/js/pagseguro.js') }}"></script>
         <script src="{{ asset('loja/js/script.js') }}"></script>
+        <script src="{{ asset('loja/js/payment.js') }}"></script>
+
     </body>
 
     </html>
+

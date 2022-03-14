@@ -140,6 +140,18 @@
                                         </ul>
 
                                     </li>
+                                    <li class="active">
+                                        <a href="#menu-design" class="iq-waves-effect collapsed" data-toggle="collapse"
+                                            aria-expanded="true"><i class="ri-menu-3-line"></i><span>Gerenciamento de
+                                                Pedidos</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                                        <ul id="menu-design" class="iq-submenu collapse"
+                                            data-parent="#iq-sidebar-toggle">
+                                            <li><a href="{{ route('admin.pedidos') }}"><i
+                                                        class="ri-git-commit-line"></i>Todos os Pedidos</a></li>
+
+                                        </ul>
+
+                                    </li>
                                 </ul>
                             </nav>
                         </div>

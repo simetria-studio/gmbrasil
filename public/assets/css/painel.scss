@@ -308,7 +308,8 @@ body.light-mode .video-bg:before {
 .wrapper {
     display: flex;
     flex-grow: 1;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: visible;
 }
 .left-side {
     flex-basis: 240px;
@@ -862,11 +863,10 @@ body.light-mode .video-bg:before {
     width: 100%;
     height: 100vh;
     display: none;
-
+    z-index: 1000;
     transition: opacity 1s ease-out;
     background-color: #ffff;
 }
-
 
 .menu-display {
     margin: 20px 10px;
@@ -881,39 +881,42 @@ body.light-mode .video-bg:before {
 }
 
 .puff-in-center {
-	-webkit-animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
-	        animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+    -webkit-animation: puff-in-center 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) both;
+    animation: puff-in-center 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) both;
 }
 
- @-webkit-keyframes puff-in-center {
+@-webkit-keyframes puff-in-center {
     0% {
-      -webkit-transform: scale(2);
-              transform: scale(2);
-      -webkit-filter: blur(4px);
-              filter: blur(4px);
-      opacity: 0;
+        -webkit-transform: scale(2);
+        transform: scale(2);
+        -webkit-filter: blur(4px);
+        filter: blur(4px);
+        opacity: 0;
     }
     100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-      -webkit-filter: blur(0px);
-              filter: blur(0px);
-      opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
     }
-  }
-  @keyframes puff-in-center {
+}
+@keyframes puff-in-center {
     0% {
-      -webkit-transform: scale(2);
-              transform: scale(2);
-      -webkit-filter: blur(4px);
-              filter: blur(4px);
-      opacity: 0;
+        -webkit-transform: scale(2);
+        transform: scale(2);
+        -webkit-filter: blur(4px);
+        filter: blur(4px);
+        opacity: 0;
     }
     100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-      -webkit-filter: blur(0px);
-              filter: blur(0px);
-      opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
     }
-  }
+}
+.card{
+    overflow-x: scroll !important;
+}

@@ -135,7 +135,6 @@ $(document).ready(function () {
 
                 $(`#removeItem-${key}`).on('click', function () {
                     total = parseFloat(total) - (parseFloat(value.price) * parseInt(value.quantity));
-                    console.log(total);
                     $.ajax({
                         url: `cartRemove/${key}`,
                         async: true,
@@ -146,6 +145,7 @@ $(document).ready(function () {
                         beforeSend: function () {
                             $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
                             $(`#cart-itens-${key}`).remove();
+                            $(`#iten-cart-${key}`).remove();
                         },
                     });
                 });
@@ -161,7 +161,7 @@ $(document).ready(function () {
 
 
     //cart 2
-    var total = 0;
+    var total2 = 0;
     $.ajax({
         url: "cart/get",
         async: true,
@@ -169,8 +169,8 @@ $(document).ready(function () {
             console.log(data)
             $('.cartWrap').empty();
             $.each(data, (key, value) => {
-                total += (value.price * value.quantity);
-                $('.cartWrap').append(`<li class="items odd">
+                total2 += (value.price * value.quantity);
+                $('.cartWrap').append(`<li id="iten-cart-${key}" class="items odd">
                 <div class="infoWrap">
                     <div class="cartSection">
                         <img src="storage/${value.attributes.image} " alt=""
@@ -178,43 +178,63 @@ $(document).ready(function () {
                         <p class="itemNumber">Código: ${value.attributes.code}</p>
                         <h3>${value.name}</h3>
 
-                        <p> <input type="text" class="qty" placeholder="${value.quantity}" /> ${value.price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</p>
+                        <p> <input type="text" data-id="${value.id}" class="qty"  placeholder="${value.quantity}" /> ${value.price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</p>
 
                     </div>
 
 
                     <div class="prodTotal cartSection">
-                        <p>${(value.price * value.quantity).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} </p>
+                        <p class="priceP-${value.id}">${(value.price * value.quantity).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} </p>
                     </div>
                     <div class="cartSection removeWrap">
-                        <a href="#" class="remove">x</a>
+                        <a id="removeitenCart-${key}" class="remove">x</a>
                     </div>
                 </div>
             </li>`);
+                $(document).on('blur', '.qty', function () {
+                    var value = $(this).val();
+                    var id = $(this).data('id');
+                    $.ajax({
+                        type: 'post',
+                        url: `cart/update/${id}`,
+                        async: true,
+                        data: { value },
+                        success: function (data) {
+                            console.log(data[key]);
+                            $(`.priceP-${data[key].id}`).html(`${(data[key].price * data[key].quantity).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`);
+                        },
+                        beforeSend: function () {
+                            $(`.priceP-${key}`).html(`<div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                          </div>`);
+                        },
+                    });
 
-                $(`#removeItem-${key}`).on('click', function () {
-                    total = parseFloat(total) - (parseFloat(value.price) * parseInt(value.quantity));
-                    console.log(total);
+                });
+                $(`#removeitenCart-${key}`).on('click', function () {
+                    total2 = parseFloat(total2) - (parseFloat(value.price) * parseInt(value.quantity));
+                    console.log('clicado')
                     $.ajax({
                         url: `cartRemove/${key}`,
                         async: true,
                         success: function (data) {
                             console.log('removido');
-                            $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
+                            $('.value').text(total2.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
                         },
                         beforeSend: function () {
-                            $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
+                            $('.value').text(total2.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
+                            $(`#iten-cart-${key}`).remove();
                             $(`#cart-itens-${key}`).remove();
                         },
                     });
                 });
             });
         },
-        beforeSend: function (data) {
-            $('.preloader_container').removeClass('d-none');
+        beforeSend: function () {
+            // $('.preloader_container').removeClass('d-none');
         },
     }).done(function () {
-        // $('.price-span').text(total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
+        $('.value').text(total2.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
         $('.preloader_container').addClass('d-none');
     });
 
@@ -228,12 +248,12 @@ $(document).ready(function () {
     // Just for testing, show all items
     $('a.btn.continue').click(function () {
         $('li.items').show(400);
-    })
+    });
+
 
 
 
 });
-
 
 
 
@@ -272,4 +292,20 @@ $('.responsive').slick({
         // settings: "unslick"
         // instead of a settings object
     ]
+});
+
+
+$('.radio').on('click', function () {
+
+    var method = $(this).val();
+
+    if (method == 'boleto') {
+        $('#boleto').removeClass('d-none');
+        $('#card').addClass('d-none');
+    }
+    if (method == 'card') {
+        $('#card').removeClass('d-none');
+        $('#boleto').addClass('d-none');
+    }
+
 });

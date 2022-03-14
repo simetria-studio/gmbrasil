@@ -5,10 +5,10 @@
     <section class="hero-slider">
         <!-- Single Slider -->
         <div class="single-slider" style="background-image: url('assets/img/gmbrasil.jpg'); 	height: auto;
-                                                    background-size: cover;
-                                                    background-position: center;
-                                                    background-repeat: no-repeat;
-                                                    height: 510px;">
+                                                        background-size: cover;
+                                                        background-position: center;
+                                                        background-repeat: no-repeat;
+                                                        height: 510px;">
             <div class="container">
                 <div class="row no-gutters">
                     <div class="col-lg-9 offset-lg-3 col-12">
@@ -42,18 +42,61 @@
 
                         </div>
                         <div>
-                            <h1 class="text-center my-4 text-uppercase">Mais Vendidos</h1>
+                            <h1 class="text-center my-4 text-uppercase title">Produtos</h1>
                             <div class="container  responsive">
                                 @foreach ($products as $product)
-                                    <div class="product-item"><img
-                                            src="{{ asset('storage/' . $product->productImage[0]->image_name) }}">
-                                        <div class="product-list">
-                                            <h3>{{ $product->name }}</h3><span class="price">R$
-                                                {{ number_format($product->value, 2, ',', '.') }}</span><button data-id="{{ $product->id }}" data-cart="{{ json_encode($product) }}"
-                                                class="btn btn-dark btn-cart btn-{{ $product->id }}">ADICIONAR</button>
+                                    @if ($product->sales_unit == 'M')
+                                        <div class="product-item"><img
+                                                src="{{ asset('storage/' . $product->productImage[0]->image_name) }}"
+                                                onerror="this.src='{{ asset('assets/img/image-not-found.jpg') }}'">
+                                            <div class="product-list">
+                                                <h3>{{ $product->name }}</h3><span class="price">R$
+                                                    {{ number_format($product->value, 2, ',', '.') }}</span><button
+                                                    data-id="{{ $product->id }}" data-cart="{{ json_encode($product) }}"
+                                                    class="btn btn-dark btn-cart btn-{{ $product->id }}">ADICIONAR</button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
+                                @endforeach
+                            </div>
 
+                        </div>
+                        <div>
+                            <h1 class="text-center my-4 text-uppercase title">Cursos</h1>
+                            <div class="container  responsive">
+                                @foreach ($products as $product)
+                                    @if ($product->sales_unit == 'P')
+                                        <div class="product-item"><img
+                                                src="{{ asset('storage/' . $product->productImage[0]->image_name) }}"
+                                                onerror="this.src='{{ asset('assets/img/image-not-found.jpg') }}'">
+                                            <div class="product-list">
+                                                <h3>{{ $product->name }}</h3><span class="price">R$
+                                                    {{ number_format($product->value, 2, ',', '.') }}</span><button
+                                                    data-id="{{ $product->id }}" data-cart="{{ json_encode($product) }}"
+                                                    class="btn btn-dark btn-cart btn-{{ $product->id }}">ADICIONAR</button>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+
+                        </div>
+                        <div>
+                            <h1 class="text-center my-4 text-uppercase title">Serviços</h1>
+                            <div class="container  responsive">
+                                @foreach ($products as $product)
+                                    @if ($product->sales_unit == 'MQ')
+                                        <div class="product-item"><img
+                                                src="{{ asset('storage/' . $product->productImage[0]->image_name) }}"
+                                                onerror="this.src='{{ asset('assets/img/image-not-found.jpg') }}'">
+                                            <div class="product-list">
+                                                <h3>{{ $product->name }}</h3><span class="price">R$
+                                                    {{ number_format($product->value, 2, ',', '.') }}</span><button
+                                                    data-id="{{ $product->id }}" data-cart="{{ json_encode($product) }}"
+                                                    class="btn btn-dark btn-cart btn-{{ $product->id }}">ADICIONAR</button>
+                                            </div>
+                                        </div>
+                                    @endif
                                 @endforeach
                             </div>
 
@@ -70,5 +113,6 @@
     <!-- End Midium Banner -->
 
     <!-- Start Most Popular -->
-
+@endsection
+@section('script')
 @endsection

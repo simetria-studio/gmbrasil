@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\painel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 
 class PedidosController extends Controller
@@ -14,9 +16,16 @@ class PedidosController extends Controller
      */
     public function index()
     {
-        return view('painel.pedidos');
+        $orders = Order::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(5);
+        return view('painel.pedidos', get_defined_vars());
     }
 
+    public function pedidosDetelhes($id)
+    {
+        $order = Order::find($id);
+        $produtos = OrderItem::where('order_id', $order->id)->get();
+        return view('painel.pedido-detail', get_defined_vars());
+    }
     /**
      * Show the form for creating a new resource.
      *

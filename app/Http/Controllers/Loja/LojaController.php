@@ -15,6 +15,8 @@ class LojaController extends Controller
      */
     public function index()
     {
+
+        // dd($sessionId);
         $products = Product::where('status', '1')->with(['productImage', 'productCategory'])->get();
         // $sales_unit_array = $this->sales_unit_array;
         return view('loja.index', get_defined_vars());
@@ -51,10 +53,12 @@ class LojaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public static function show()
     {
-        //
+      return 'ok';
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

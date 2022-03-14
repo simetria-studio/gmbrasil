@@ -1,10 +1,10 @@
 $main-color: #1664ac;
-$secundary-color: #DE5107;
+$secundary-color: #de5107;
 $third-color: #252445;
 $text-color: #444444;
 
-@import 'cart';
-@import 'loader';
+@import "cart";
+@import "loader";
 
 body {
     font-family: "Lato", sans-serif;
@@ -25,6 +25,7 @@ body {
     border: none;
     border-top-right-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
+    padding: 0 20px;
 }
 .search {
     input {
@@ -62,10 +63,10 @@ body {
         color: $secundary-color;
     }
 }
-.nav-item{
+.nav-item {
     text-transform: uppercase;
     font-weight: 600;
-    a{
+    a {
         color: $third-color;
     }
 }
@@ -186,7 +187,7 @@ div.mini-shopping-cart .mini-shopping-cart-buttons {
     height: 36px;
     line-height: 36px;
     outline: 0;
-    padding: 0 7px;
+    padding: 0 30px;
     text-transform: uppercase;
     vertical-align: middle;
     -webkit-tap-highlight-color: transparent;
@@ -339,13 +340,87 @@ div.mini-shopping-cart .mini-shopping-cart-buttons {
     }
 }
 /*******************************/
-
-
+.main-adress {
+    margin: 5em 0;
+}
+.main-checkout {
+    margin: 5em 0;
+}
 //footer
+input.radio {
+    position: relative;
+    margin-right: 8px;
+}
 
-footer{
+.radio::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    background: #fff;
+}
 
+.radio:checked::after {
+    content: "\f0c8";
+    color: #000;
+    background-color: #000;
+    font-size: 0;
+    font-weight: 700;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 12px;
+    height: 12px;
+}
+footer {
     background: #040404;
     height: 200px;
     width: 100%;
 }
+
+.title::before {
+    transform: scaleX(0);
+    color: #fff;
+    transform-origin: bottom right;
+}
+
+.title:hover::before {
+    transform: scaleX(1);
+    color: #fff;
+    transform-origin: bottom left;
+}
+
+.title::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    inset: 0 0 0 0;
+    background: rgb(7, 164, 243);
+    color: #fff;
+    z-index: -1;
+    transition: transform 0.3s ease;
+}
+
+.title {
+    position: relative;
+    font-size: 3rem;
+}
+.title:hover {
+    position: relative;
+    font-size: 3rem;
+    color: #fff;
+}
+
+html {
+    block-size: 100%;
+    inline-size: 100%;
+}
+
+

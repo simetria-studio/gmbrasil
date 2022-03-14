@@ -36,7 +36,7 @@
                     <div class="header-menu">
                         <a class="menu-link is-active" href="{{ route('home') }}">Home</a>
                         <a class="menu-link notify" href="#">Carteira</a>
-                        <a class="menu-link" href="#">Loja</a>
+                        <a class="menu-link" href="{{ route('loja') }}">Loja</a>
                         <a class="menu-link notify" href="#">Suporte</a>
                     </div>
                     <div class="search-bar">
@@ -74,10 +74,10 @@
                                 Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#"><i class="fas fa-store-alt"></i> Loja</a>
+                            <a class="nav-link active" href="{{ route('loja') }}"><i class="fas fa-store-alt"></i> Loja</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#"><i class="far fa-list-alt"></i> Pedidos</a>
+                            <a class="nav-link active" href="{{ route('pedidos') }}"><i class="far fa-list-alt"></i> Pedidos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#"><i class="fas fa-box-open"></i> Meus Produtos</a>

@@ -17,6 +17,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "pagseguro/pagseguro-php-sdk": "^6.0",
         "ramsey/uuid": "^4.2",
         "spatie/laravel-sluggable": "^2.6"
     },
@@ -34,9 +35,10 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
-        
+
         "files": [
-            "app/Helpers/functions.php"
+            "app/Helpers/functions.php",
+            "app/Helpers/pagseguro.php"
         ]
     },
     "autoload-dev": {

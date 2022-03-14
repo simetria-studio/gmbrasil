@@ -34,7 +34,7 @@
                     <div class="app-card__subtext">Faça seus pedidos
                     </div>
                     <div class="app-card-buttons">
-                        <button class="content-button status-button">Ver</button>
+                       <a href="{{ route('pedidos') }}"> <button class="content-button status-button">Ver</button></a>
                         <div class="menu"></div>
                     </div>
                 </div>

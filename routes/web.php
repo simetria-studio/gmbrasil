@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Admin\BrocheToUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CepController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\Loja\cartController;
 use App\Http\Controllers\Loja\LojaController;
 use Illuminate\Routing\Route as RoutingRoute;
 use App\Http\Controllers\Auth\AdminController;
@@ -12,13 +13,14 @@ use App\Http\Controllers\Admin\PainelController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Alunos\AlunosController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Cartao\CartaoController;
 use App\Http\Controllers\painel\LucrosController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Cartao\CartaoController;
-use App\Http\Controllers\Loja\cartController;
 use App\Http\Controllers\painel\EstoqueController;
 use App\Http\Controllers\painel\PedidosController;
 use App\Http\Controllers\painel\AfiliadosController;
+use App\Http\Controllers\Admin\BrocheToUserController;
+use App\Http\Controllers\Admin\PedidosController as AdminPedidosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +55,9 @@ Route::post('cartao/cadastro/store', [CartaoController::class, 'store'])->name('
 Route::middleware(['auth:web'])->group(function () {
 
     Route::get('/pedidos', [PedidosController::class, 'index'])->name('pedidos');
+    Route::get('/pedidos/detelhe/{id}', [PedidosController::class, 'pedidosDetelhes'])->name('pedidos.detelhes');
+
+
     Route::get('/estoque', [EstoqueController::class, 'index'])->name('estoque');
     Route::get('/afiliados', [AfiliadosController::class, 'index'])->name('afiliados');
     Route::get('/afiliados/todos', [AfiliadosController::class, 'create'])->name('afiliados.todos');
@@ -66,6 +71,15 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('cartRemove/{id}', [cartController::class, 'cartRemove'])->name('cart.remove');
     Route::get('cart/get', [cartController::class, 'cartGet'])->name('cart.get');
     Route::get('cart', [cartController::class, 'cart'])->name('cart');
+    Route::post('cart/update/{id}', [cartController::class, 'cartUpdate'])->name('cart.update');
+
+    Route::get('shipping', [CheckoutController::class, 'shipping'])->name('shipping');
+    Route::get('checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+    Route::get('checkout/token', [CheckoutController::class, 'makePagSeguroSession'])->name('checkout.token');
+    Route::any('checkout/getToken', [CheckoutController::class, 'getToken'])->name('checkout.client');
+    Route::post('checkout/finalizar', [CheckoutController::class, 'checkoutEnd'])->name('checkout.end');
+    Route::post('checkout/boleto', [CheckoutController::class, 'boleto'])->name('checkout.boleto');
+
 
 
     Route::get('product-detail/{slug}', [LojaController::class, 'productDetail'])->name('product.detail');
@@ -96,6 +110,9 @@ Route::middleware(['auth:admin'])->prefix('/cadastro')->group(function () {
     Route::post('/inativar_produto', [ProductController::class, 'inativarProduto']);
 
     Route::post('add/broche', [BrocheToUserController::class, 'store'])->name('add.broche');
+
+    Route::get('pedidos', [AdminPedidosController::class, 'index'])->name('admin.pedidos');
+    Route::get('pedidos/detalhes/{id}', [AdminPedidosController::class, 'pedidoDetail'])->name('admin.pedidos.detelhe');
 });
 
 
